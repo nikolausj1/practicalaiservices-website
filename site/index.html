@@ -344,6 +344,29 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        /* Speaking Section Two-Column Layout */
+        .speaking-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .speaking-text {
+            flex: 1;
+        }
+
+        .speaking-image {
+            text-align: center;
+        }
+
+        .speaking-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
         .previous-work {
             grid-column: 1 / -1;
             margin-top: 40px;
@@ -518,6 +541,15 @@
                 order: -1;
             }
 
+            .speaking-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .speaking-image {
+                order: -1;
+            }
+
             .previous-work {
                 grid-column: 1;
             }
@@ -591,28 +623,35 @@
         <section id="speaking">
             <div class="section-card">
                 <h2>Speaking</h2>
-                <p>I give talks that make AI approachable, practical, and immediately useful for professionals at every level.</p>
+                <div class="speaking-content">
+                    <div class="speaking-text">
+                        <p>I give talks that make AI approachable, practical, and immediately useful for professionals at every level.</p>
 
-                <h3>Current Talk: Practical AI</h3>
-                <p>A clear, non-technical introduction to artificial intelligence for professionals across all functions. This session breaks down what AI is (and isn't), explains why it's suddenly everywhere, and shows how tools like ChatGPT and Claude can support real work. Attendees learn to use AI confidently and responsibly, with real-world examples and clear guidance on benefits, limitations, and common pitfalls.</p>
+                        <h3>Current Talk: Practical AI</h3>
+                        <p>A clear, non-technical introduction to artificial intelligence for professionals across all functions. This session breaks down what AI is (and isn't), explains why it's suddenly everywhere, and shows how tools like ChatGPT and Claude can support real work. Attendees learn to use AI confidently and responsibly, with real-world examples and clear guidance on benefits, limitations, and common pitfalls.</p>
 
-                <h3>What Attendees Walk Away With</h3>
-                <ul>
-                    <li>A clear understanding of what AI can and can't do right now</li>
-                    <li>Practical tips they can apply to their own work immediately</li>
-                    <li>Access to a curated AI toolkit with tools, resources, and a prompt library</li>
-                    <li>Confidence to start experimenting, regardless of technical background</li>
-                </ul>
+                        <h3>What Attendees Walk Away With</h3>
+                        <ul>
+                            <li>A clear understanding of what AI can and can't do right now</li>
+                            <li>Practical tips they can apply to their own work immediately</li>
+                            <li>Access to a curated AI toolkit with tools, resources, and a prompt library</li>
+                            <li>Confidence to start experimenting, regardless of technical background</li>
+                        </ul>
 
-                <h3>Who This Is For</h3>
-                <p>This talk is designed for organizations navigating AI adoption, professional groups and associations, corporate learning and development programs, and conference audiences looking for a grounded, practical perspective on AI.</p>
+                        <h3>Who This Is For</h3>
+                        <p>This talk is designed for organizations navigating AI adoption, professional groups and associations, corporate learning and development programs, and conference audiences looking for a grounded, practical perspective on AI.</p>
 
-                <h3>Past Engagements</h3>
-                <ul>
-                    <li>RBC Wealth Management - The Intelligence Effect: An Evening of AI, Insight & Influence</li>
-                </ul>
+                        <h3>Past Engagements</h3>
+                        <ul>
+                            <li>RBC Wealth Management - The Intelligence Effect: An Evening of AI, Insight & Influence</li>
+                        </ul>
 
-                <a href="mailto:justin@practicalaiservices.com" class="cta-button">Book a Talk</a>
+                        <a href="mailto:justin@practicalaiservices.com" class="cta-button">Book a Talk</a>
+                    </div>
+                    <div class="speaking-image">
+                        <img src="images/speaking01.jpg" alt="Justin Nikolaus speaking at an event">
+                    </div>
+                </div>
             </div>
         </section>
 
