@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Nikolaus - AI Consulting & Speaking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-blue: #0066CC;
+            --dark-blue: #001F3F;
+            --light-blue: #E6F2FF;
+            --dark-gray: #333333;
+            --med-gray: #666666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-blue);
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* Animated geometric network background */
+        .background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(45deg, transparent 40%, rgba(0,102,204,0.03) 40%, rgba(0,102,204,0.03) 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(0,102,204,0.03) 40%, rgba(0,102,204,0.03) 60%, transparent 60%);
+            background-size: 60px 60px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .network-dots {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0,102,204,0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,102,204,0.5);
+        }
+
+        .dot:nth-child(1) { top: 20%; left: 15%; animation: pulse 3s ease-in-out infinite; }
+        .dot:nth-child(2) { top: 30%; left: 75%; animation: pulse 3s ease-in-out 0.5s infinite; }
+        .dot:nth-child(3) { top: 60%; left: 25%; animation: pulse 3s ease-in-out 1s infinite; }
+        .dot:nth-child(4) { top: 70%; left: 80%; animation: pulse 3s ease-in-out 1.5s infinite; }
+        .dot:nth-child(5) { top: 45%; left: 50%; animation: pulse 3s ease-in-out 2s infinite; }
+        .dot:nth-child(6) { top: 90%; left: 40%; animation: pulse 3s ease-in-out 2.5s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(2); opacity: 1; }
+        }
+
+        /* Content Container */
+        .content {
+            position: relative;
+            z-index: 1;
+            padding-top: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            background-image: url('images/hero01.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,31,63,0.75);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: left;
+            background: rgba(0,31,63,0.8);
+            backdrop-filter: blur(10px);
+            border-left: 5px solid var(--brand-blue);
+            padding: 80px;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            padding-left: 15px;
+            border-left: 3px solid var(--brand-blue);
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--brand-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--brand-blue);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            border-color: var(--brand-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,102,204,0.4);
+        }
+
+        section#consulting .cta-button:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section#about {
+            background: #f5f7fa;
+            color: var(--dark-gray);
+        }
+
+        section#speaking {
+            background: var(--dark-blue);
+            color: white;
+        }
+
+        section#consulting {
+            background: #f5f7fa;
+            color: var(--dark-gray);
+        }
+
+        section#contact {
+            background: var(--dark-blue);
+            color: white;
+        }
+
+        .section-card {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px;
+        }
+
+        section#about .section-card,
+        section#consulting .section-card {
+            background: transparent;
+            border-left: 5px solid var(--brand-blue);
+        }
+
+        section#speaking .section-card,
+        section#contact .section-card {
+            background: transparent;
+            border-left: 5px solid var(--brand-blue);
+        }
+
+        h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        section#about h3,
+        section#consulting h3 {
+            color: var(--dark-gray);
+        }
+
+        section#speaking h3,
+        section#contact h3 {
+            color: rgba(255,255,255,0.95);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        section#about p,
+        section#consulting p {
+            color: var(--dark-gray);
+        }
+
+        section#speaking p,
+        section#contact p {
+            color: rgba(255,255,255,0.85);
+        }
+
+        ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        ul li {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        section#about ul li,
+        section#consulting ul li {
+            color: var(--dark-gray);
+        }
+
+        section#speaking ul li,
+        section#contact ul li {
+            color: rgba(255,255,255,0.85);
+        }
+
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--brand-blue);
+            font-weight: bold;
+        }
+
+        /* About Section Two-Column Layout */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .previous-work {
+            grid-column: 1 / -1;
+            margin-top: 40px;
+        }
+
+        .previous-work h3 {
+            margin-top: 0;
+        }
+
+        .logo-row {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .logo-row img {
+            width: auto;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s ease;
+        }
+
+        .logo-row img[src*="microsoft"] {
+            height: 35px;
+        }
+
+        .logo-row img[src*="amazon"] {
+            height: 35px;
+        }
+
+        .logo-row img[src*="nasa"] {
+            height: 50px;
+        }
+
+        .logo-row img[src*="target"] {
+            height: 60px;
+        }
+
+        .logo-row img:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: translateY(-5px);
+        }
+
+        /* Process Steps Grid */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .process-step {
+            background: rgba(0,102,204,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,102,204,0.3);
+            transition: all 0.3s ease;
+        }
+
+        section#consulting .process-step {
+            border-color: rgba(0,102,204,0.3);
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,102,204,0.2);
+            border-color: var(--brand-blue);
+        }
+
+        .process-step h4 {
+            font-size: 20px;
+            color: var(--brand-blue);
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 30px;
+            background: rgba(0,102,204,0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(0,102,204,0.3);
+            margin-top: 40px;
+            max-width: 600px;
+        }
+
+        .contact-info div {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            word-wrap: break-word;
+        }
+
+        .contact-info strong {
+            color: var(--brand-blue);
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .contact-info a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero-content {
+                padding: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            .section-card {
+                padding: 40px 20px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .previous-work {
+                grid-column: 1;
+            }
+
+            .logo-row {
+                justify-content: center;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="background-canvas"></div>
+    <div class="network-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Hero Section -->
+        <div class="hero" id="hero">
+            <div class="hero-content">
+                <h1>Justin Nikolaus</h1>
+                <h2>AI Consulting & Speaking</h2>
+                <div class="subtitle">A decade of building AI products at Microsoft and Amazon. Now helping organizations put AI to work.</div>
+                <div class="hero-buttons">
+                    <a href="#speaking" class="cta-button">Speaking</a>
+                    <a href="#consulting" class="cta-button">Consulting</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-card">
+                <h2>About</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I've spent more than ten years bringing AI out of research labs and into products people actually use.</p>
+
+                        <p>At Microsoft, I helped embed intelligent features directly into Windows. At Amazon, I shaped flagship Alexa experiences and led the design of a voice interface built for astronauts operating aboard the Artemis lunar missions. Most recently, I worked on Amazon's AI Design Systems team, prototyping the next generation of human-AI interaction.</p>
+
+                        <p>That background gives me a practical perspective on what AI can actually do today, where it falls short, and how to close the gap. I bring the same hands-on, user-centered thinking to my consulting and speaking work: helping organizations move past the hype and start getting real value from AI tools.</p>
+
+                        <p>I'm based in Seattle, Washington.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/headshot.jpg" alt="Justin Nikolaus headshot">
+                    </div>
+                    <div class="previous-work">
+                        <h3>Previous Work</h3>
+                        <div class="logo-row">
+                            <img src="images/microsoft.png" alt="Microsoft">
+                            <img src="images/amazon.png" alt="Amazon">
+                            <img src="images/nasa.png" alt="NASA">
+                            <img src="images/target.png" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speaking Section -->
+        <section id="speaking">
+            <div class="section-card">
+                <h2>Speaking</h2>
+                <p>I give talks that make AI approachable, practical, and immediately useful for professionals at every level.</p>
+
+                <h3>Current Talk: Practical AI</h3>
+                <p>A clear, non-technical introduction to artificial intelligence for professionals across all functions. This session breaks down what AI is (and isn't), explains why it's suddenly everywhere, and shows how tools like ChatGPT and Claude can support real work. Attendees learn to use AI confidently and responsibly, with real-world examples and clear guidance on benefits, limitations, and common pitfalls.</p>
+
+                <h3>What Attendees Walk Away With</h3>
+                <ul>
+                    <li>A clear understanding of what AI can and can't do right now</li>
+                    <li>Practical tips they can apply to their own work immediately</li>
+                    <li>Access to a curated AI toolkit with tools, resources, and a prompt library</li>
+                    <li>Confidence to start experimenting, regardless of technical background</li>
+                </ul>
+
+                <h3>Who This Is For</h3>
+                <p>This talk is designed for organizations navigating AI adoption, professional groups and associations, corporate learning and development programs, and conference audiences looking for a grounded, practical perspective on AI.</p>
+
+                <h3>Past Engagements</h3>
+                <ul>
+                    <li>RBC Wealth Management - The Intelligence Effect: An Evening of AI, Insight & Influence</li>
+                </ul>
+
+                <a href="mailto:justin@practicalaiservices.com" class="cta-button">Book a Talk</a>
+            </div>
+        </section>
+
+        <!-- Consulting Section -->
+        <section id="consulting">
+            <div class="section-card">
+                <h2>Consulting</h2>
+                <p>I help organizations figure out where AI fits, design the implementation, and get it running.</p>
+
+                <p>Most organizations know they should be doing something with AI. The challenge is figuring out what, specifically, will deliver real value and then making it work within existing systems, teams, and budgets.</p>
+
+                <p>That's where I come in. I bring ten years of building AI products at scale to help organizations move from interest to implementation. My approach is grounded in user experience design, meaning the solutions I help build aren't just technically sound; they're tools people actually want to use.</p>
+
+                <h3>Areas of Focus</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <h4>AI Strategy & Readiness</h4>
+                        <p>Assessing where AI can deliver the most value in your organization and building a realistic plan to get there.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Implementation & Integration</h4>
+                        <p>Designing and deploying AI solutions that work within your existing technology environment, from tool selection to system integration.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Employee Training & Adoption</h4>
+                        <p>Helping teams understand, trust, and actually use the tools being put in front of them. Technology only delivers ROI if people adopt it.</p>
+                    </div>
+                    <div class="process-step">
+                        <h4>Conversational AI & Assistants</h4>
+                        <p>Designing intelligent assistants and chatbots that feel natural and useful, drawing on a decade of experience in conversation design.</p>
+                    </div>
+                </div>
+
+                <h3>My Approach</h3>
+                <p>Every engagement starts with understanding your people, your workflows, and your goals. I don't sell a platform or push a specific vendor. I bring independent expertise, recommend what fits, and help you build it. The goal is always the same: AI that works for your organization, not a proof of concept that collects dust.</p>
+
+                <h3>Start a Conversation</h3>
+                <p>If you're exploring how AI could support your organization, I'd welcome the chance to talk through it. Reach out at justin@practicalaiservices.com</p>
+
+                <a href="mailto:justin@practicalaiservices.com" class="cta-button">Start a Conversation</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-card">
+                <h2>Contact</h2>
+                <p>Whether you're looking to book a talk, explore a consulting engagement, or just have a question about AI, I'd like to hear from you.</p>
+
+                <div class="contact-info">
+                    <div><strong>Email:</strong> <a href="mailto:justin@practicalaiservices.com">justin@practicalaiservices.com</a></div>
+                    <div><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/justinnikolaus" target="_blank">Justin Nikolaus</a></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Justin Nikolaus
+    </footer>
+
+    <script>
+        // Intersection Observer for sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
