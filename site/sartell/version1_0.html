@@ -168,11 +168,6 @@
             color: var(--dark-gray);
         }
 
-        section#phase-roadmap {
-            background: white;
-            color: var(--dark-gray);
-        }
-
         section#how-it-works {
             background: var(--dark-blue);
             color: white;
@@ -189,8 +184,8 @@
         }
 
         section#contact {
-            background: var(--dark-blue);
-            color: white;
+            background: white;
+            color: var(--dark-gray);
         }
 
         .section-card {
@@ -200,14 +195,14 @@
         }
 
         section#overview .section-card,
-        section#features .section-card {
+        section#features .section-card,
+        section#contact .section-card {
             background: transparent;
             border-left: 5px solid var(--brand-blue);
         }
 
         section#how-it-works .section-card,
-        section#pricing .section-card,
-        section#contact .section-card {
+        section#pricing .section-card {
             background: transparent;
             border-left: 5px solid var(--brand-blue);
         }
@@ -227,13 +222,13 @@
         }
 
         section#overview h3,
-        section#features h3 {
+        section#features h3,
+        section#contact h3 {
             color: var(--dark-gray);
         }
 
         section#how-it-works h3,
-        section#pricing h3,
-        section#contact h3 {
+        section#pricing h3 {
             color: rgba(255,255,255,0.95);
         }
 
@@ -244,13 +239,13 @@
         }
 
         section#overview p,
-        section#features p {
+        section#features p,
+        section#contact p {
             color: var(--dark-gray);
         }
 
         section#how-it-works p,
-        section#pricing p,
-        section#contact p {
+        section#pricing p {
             color: rgba(255,255,255,0.85);
         }
 
@@ -268,13 +263,13 @@
         }
 
         section#overview ul li,
-        section#features ul li {
+        section#features ul li,
+        section#contact ul li {
             color: var(--dark-gray);
         }
 
         section#how-it-works ul li,
-        section#pricing ul li,
-        section#contact ul li {
+        section#pricing ul li {
             color: rgba(255,255,255,0.85);
         }
 
@@ -405,195 +400,6 @@
             font-size: 16px;
             line-height: 1.6;
             margin: 0;
-        }
-
-        /* Process Step Status States */
-        .process-step .status-badge {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-        }
-
-        .process-step.completed {
-            border-color: #22c55e;
-        }
-
-        .process-step.completed .process-step-number {
-            background: #22c55e;
-        }
-
-        .process-step.completed .status-badge {
-            background: rgba(34,197,94,0.15);
-            color: #22c55e;
-        }
-
-        .process-step.completed h4 {
-            color: #22c55e;
-        }
-
-        .process-step.in-progress {
-            border-color: var(--brand-blue);
-            box-shadow: 0 0 20px rgba(0,102,204,0.15);
-        }
-
-        .process-step.in-progress .process-step-number {
-            background: var(--brand-blue);
-            animation: pulseBlue 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseBlue {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0,102,204,0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(0,102,204,0); }
-        }
-
-        .process-step.in-progress .status-badge {
-            background: rgba(0,102,204,0.15);
-            color: var(--brand-blue);
-        }
-
-        .process-step.upcoming {
-            opacity: 0.7;
-        }
-
-        .process-step.upcoming .status-badge {
-            background: rgba(0,0,0,0.05);
-            color: var(--med-gray);
-        }
-
-        /* Phase Roadmap */
-        .phase-roadmap {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin: 40px 0 0;
-            position: relative;
-        }
-
-        .phase-roadmap::before {
-            content: '';
-            position: absolute;
-            left: 24px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--brand-blue), rgba(0,102,204,0.15));
-        }
-
-        .phase-card {
-            display: flex;
-            gap: 24px;
-            padding: 28px 0;
-            position: relative;
-        }
-
-        .phase-card + .phase-card {
-            border-top: 1px solid rgba(0,102,204,0.1);
-        }
-
-        .phase-marker {
-            min-width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-            z-index: 1;
-            flex-shrink: 0;
-        }
-
-        .phase-card.defined .phase-marker {
-            background: var(--brand-blue);
-            color: white;
-            box-shadow: 0 0 0 4px rgba(0,102,204,0.2);
-        }
-
-        .phase-card.planned .phase-marker {
-            background: white;
-            color: var(--brand-blue);
-            border: 3px solid var(--brand-blue);
-        }
-
-        .phase-card.future .phase-marker {
-            background: white;
-            color: var(--med-gray);
-            border: 3px solid rgba(0,0,0,0.15);
-        }
-
-        .phase-content {
-            flex: 1;
-        }
-
-        .phase-content h4 {
-            font-size: 20px;
-            margin-bottom: 6px;
-        }
-
-        .phase-card.defined .phase-content h4 {
-            color: var(--brand-blue);
-        }
-
-        .phase-card.planned .phase-content h4 {
-            color: var(--dark-gray);
-        }
-
-        .phase-card.future .phase-content h4 {
-            color: var(--med-gray);
-        }
-
-        .phase-label {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-
-        .phase-card.defined .phase-label {
-            background: rgba(0,102,204,0.12);
-            color: var(--brand-blue);
-        }
-
-        .phase-card.planned .phase-label {
-            background: rgba(0,0,0,0.06);
-            color: var(--med-gray);
-        }
-
-        .phase-card.future .phase-label {
-            background: rgba(0,0,0,0.04);
-            color: #999;
-        }
-
-        .phase-content p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .phase-card.future .phase-content p {
-            color: var(--med-gray);
-        }
-
-        section#phase-roadmap .section-card {
-            background: transparent;
-            border-left: 5px solid var(--brand-blue);
-        }
-
-        section#phase-roadmap h2 {
-            color: var(--brand-blue);
-        }
-
-        section#phase-roadmap h3 {
-            color: var(--dark-gray);
         }
 
         /* Mockup Image */
@@ -833,20 +639,20 @@
             flex-direction: column;
             gap: 15px;
             padding: 30px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,102,204,0.1);
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(0,102,204,0.3);
             margin-top: 40px;
         }
 
         .contact-info div {
             font-size: 18px;
-            color: rgba(255,255,255,0.85);
+            color: var(--dark-gray);
             word-wrap: break-word;
         }
 
         .contact-info strong {
-            color: white;
+            color: var(--brand-blue);
             display: inline-block;
             min-width: 80px;
         }
@@ -926,21 +732,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .phase-card {
-                gap: 16px;
-                padding: 20px 0;
-            }
-
-            .phase-marker {
-                min-width: 40px;
-                height: 40px;
-                font-size: 12px;
-            }
-
-            .phase-roadmap::before {
-                left: 19px;
-            }
-
             .mockup-container {
                 padding: 20px;
             }
@@ -964,6 +755,11 @@
     </div>
 
 
+    <!-- Archive Banner -->
+    <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: #e8a020; color: #fff; text-align: center; padding: 10px 20px; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+        This is an archived proposal (Version 1.0). <a href="/sartell/" style="color: #fff; font-weight: 600; text-decoration: underline;">View the current version</a>
+    </div>
+
     <!-- Content -->
     <div class="content">
         <!-- Hero Section -->
@@ -972,8 +768,6 @@
                 <h1>AI ASSISTANT</h1>
                 <h2>FOR CITY OF SARTELL</h2>
                 <div class="subtitle">Employee Productivity Solution</div>
-                <div style="font-size: 16px; opacity: 0.5; margin-bottom: 8px; font-weight: 300;">Version 1.1</div>
-                <div style="font-size: 15px; opacity: 0.6; margin-bottom: 40px; color: rgba(255,255,255,0.7); font-weight: 400;">Phase 1 Scope Confirmed — February 2026</div>
                 <a href="#overview" class="cta-button" onclick="scrollToSection('overview')">Learn More</a>
             </div>
         </div>
@@ -982,7 +776,7 @@
         <section id="overview">
             <div class="section-card">
                 <h2>OVERVIEW</h2>
-                <p>In collaboration with the city's technology and operations leadership, we've defined the Phase 1 scope for Sartell's AI assistant. The approach focuses on fast time-to-value: approximately 70–95 publicly available city documents—including city code, policies, building guides, planning documents, and public works information—loaded into SharePoint and powering an AI assistant accessible through Microsoft Teams. Built on Microsoft Copilot Studio and GPT-4o within the city's existing Microsoft 365 environment, this system delivers accurate, cited answers in seconds, empowering staff to make informed decisions in the field without complex integrations.</p>
+                <p>The AI Assistant for City of Sartell provides an intelligent, AI-powered solution that enables city employees to instantly access policies, ordinances, and procedures through Microsoft Teams. Built on Microsoft Copilot and GPT-4, this system delivers accurate, cited answers in 2-4 seconds empowering staff to make informed decisions while working in the field.</p>
 
                 <h3>The Challenge</h3>
                 <ul>
@@ -992,7 +786,7 @@
                 </ul>
 
                 <h3>The Solution</h3>
-                <p>Phase 1 delivers an AI-powered assistant integrated directly into Microsoft Teams (desktop and mobile) trained on approximately 70–95 publicly available city documents. The knowledge base includes all 12 city code titles, city policies, police department policies, building department guides, planning and community development documents, financial reports, public works information, and resident resources—all sourced from sartellmn.com and loaded into SharePoint. Employees ask questions in plain English and receive accurate, cited answers within seconds—no searching, no calling, no delays.</p>
+                <p>An AI-powered assistant integrated directly into Microsoft Teams (desktop and mobile) that provides instant access to city policies, ordinances, and procedures. Employees simply ask questions in plain English and receive accurate, cited answers within seconds—no searching, no calling, no delays.</p>
 
                 <div class="mockup-container">
                     <img src="product01.png" width="400" alt="Microsoft Teams interface showing the AI Assistant" style="max-width: 100%; height: auto;" />
@@ -1003,46 +797,40 @@
                 <p>A clear, structured approach ensures smooth deployment and adoption:</p>
 
                 <div class="process-steps">
-                    <div class="process-step completed">
-                        <div class="process-step-number">&#10003;</div>
-                        <span class="status-badge">Complete</span>
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
                         <h4>User Research & Discovery</h4>
-                        <p>Scope defined with city technology and operations leadership in February 2026. Phase 1 data set identified: approximately 70–95 publicly available city documents across city code, policies, building guides, and more.</p>
+                        <p>Survey departments to understand their specific needs, common questions, pain points, and workflows. Ensure the system is designed around real user requirements.</p>
                     </div>
 
-                    <div class="process-step in-progress">
+                    <div class="process-step">
                         <div class="process-step-number">2</div>
-                        <span class="status-badge">In Progress</span>
                         <h4>Data Collection & Upload</h4>
-                        <p>Approximately 70–95 public documents identified and cataloged from sartellmn.com. Download, verification, and SharePoint upload underway.</p>
+                        <p>Access and collect relevant PDFs and documents, verify they can be properly indexed, and upload to your SharePoint environment for indexing by Copilot Studio.</p>
                     </div>
 
-                    <div class="process-step upcoming">
+                    <div class="process-step">
                         <div class="process-step-number">3</div>
-                        <span class="status-badge">Up Next</span>
                         <h4>UX Design & Integration</h4>
-                        <p>Design the conversational experience and connect GPT-4o, SharePoint, and Copilot Studio services within the city's Microsoft 365 environment.</p>
+                        <p>Design the conversational experience and connect GPT-4o, SharePoint, and Copilot Studio services.</p>
                     </div>
 
-                    <div class="process-step upcoming">
+                    <div class="process-step">
                         <div class="process-step-number">4</div>
-                        <span class="status-badge">Upcoming</span>
                         <h4>QA & Testing</h4>
-                        <p>Rigorous testing with city staff to ensure accuracy, response quality, and system reliability before broader rollout.</p>
+                        <p>Rigorous testing to ensure accuracy, response quality, and system reliability before launch.</p>
                     </div>
 
-                    <div class="process-step upcoming">
+                    <div class="process-step">
                         <div class="process-step-number">5</div>
-                        <span class="status-badge">Upcoming</span>
                         <h4>Deployment & Expansion</h4>
-                        <p>Deploy to an initial pilot group, gather feedback, refine responses, then roll out to all departments with training materials and best practices.</p>
+                        <p>Deploy to initial pilot department, gather feedback, refine, then roll out to all departments with documented best practices and training materials.</p>
                     </div>
 
-                    <div class="process-step upcoming">
+                    <div class="process-step">
                         <div class="process-step-number">6</div>
-                        <span class="status-badge">Upcoming</span>
                         <h4>Ongoing Support</h4>
-                        <p>Bug fixes, user experience optimization, content updates, and identification of new AI assistance opportunities.</p>
+                        <p>Bug fixes, user experience optimazation, content updates, and identification of new AI assistance opportunities.</p>
                     </div>
                 </div>
 
@@ -1218,53 +1006,7 @@
                 </div>
 <br/>
                 <h3>Return on Investment</h3>
-               <p>Based on San Francisco's deployment of Microsoft Copilot to 30,000 city employees, staff save an average of <strong>5 hours per week</strong>. For a department of 20 people, this translates to <strong>$156,000 per year in productivity value</strong> (60 hours/week × $50/hour × 52 weeks). The Year 1 investment of $20,200 delivers approximately <strong>8x ROI</strong> from a single department. The core platform cost remains minimal at just $1,200/year, with optional support available as needed to ensure the system continues to deliver value.</p>
-            </div>
-        </section>
-
-        <!-- Phase Roadmap Section -->
-        <section id="phase-roadmap">
-            <div class="section-card">
-                <h2>PROJECT PHASES</h2>
-                <p>A phased approach ensures each stage delivers value and informs the next. Phase 1 scope has been defined in collaboration with city leadership.</p>
-
-                <div class="phase-roadmap">
-                    <div class="phase-card defined">
-                        <div class="phase-marker">1</div>
-                        <div class="phase-content">
-                            <span class="phase-label">Defined</span>
-                            <h4>Phase 1 — Internal AI Assistant</h4>
-                            <p>AI-powered assistant for city employees via Microsoft Teams. Approximately 70–95 publicly available city documents—city code, policies, building guides, planning and community development documents, public works information—loaded into SharePoint. Built on Copilot Studio within the city's existing Microsoft 365 environment. Estimated 4–6 weeks from kickoff to deployment.</p>
-                        </div>
-                    </div>
-
-                    <div class="phase-card planned">
-                        <div class="phase-marker">1.5</div>
-                        <div class="phase-content">
-                            <span class="phase-label">Planned</span>
-                            <h4>Phase 1.5 — Expanded Knowledge Base</h4>
-                            <p>Extend the assistant's knowledge to include internal HR documents such as the employee handbook and bargaining agreements, providing deeper coverage for employee questions.</p>
-                        </div>
-                    </div>
-
-                    <div class="phase-card future">
-                        <div class="phase-marker">2</div>
-                        <div class="phase-content">
-                            <span class="phase-label">Future</span>
-                            <h4>Phase 2 — Public-Facing Bot</h4>
-                            <p>Resident self-service bot on the city website, expanding data sources beyond public documents to serve citizens directly.</p>
-                        </div>
-                    </div>
-
-                    <div class="phase-card future">
-                        <div class="phase-marker">3+</div>
-                        <div class="phase-content">
-                            <span class="phase-label">Future</span>
-                            <h4>Phase 3+ — Deeper Integrations</h4>
-                            <p>System integrations, automation capabilities, and potential expansion to additional organizations.</p>
-                        </div>
-                    </div>
-                </div>
+               <p>Based on San Francisco's deployment of Microsoft Copilot to 30,000 city employees, staff save an average of <strong>5 hours per week</strong>. For a department of 20 people, this translates to <strong>$156,000 per year in productivity value</strong> (60 hours/week × $50/hour × 52 weeks). The Year 1 investment of $18,200 delivers approximately <strong>9x ROI</strong> from a single department. The core platform cost remains minimal at just $1,200/year, with optional support available as needed to ensure the system continues to deliver value.</p>
             </div>
         </section>
 
@@ -1296,7 +1038,7 @@
 
         <!-- Version Archive -->
         <footer style="text-align: center; padding: 30px 20px; opacity: 0.4; font-size: 13px;">
-            <a href="/sartell/version1_0.html" style="color: inherit; text-decoration: none;">Version 1.0 — Original Proposal (January 2026)</a>
+            <a href="/sartell/proposal01.html" style="color: inherit; text-decoration: none;">Previous Versions</a>
         </footer>
     </div>
 
