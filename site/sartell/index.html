@@ -198,8 +198,6 @@
         }
 
         section#overview .section-card,
-        section#project-phases .section-card,
-
         section#ongoing-support .section-card {
             background: transparent;
             border-left: 5px solid var(--brand-blue);
@@ -292,9 +290,11 @@
         .phase-roadmap {
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 20px;
             margin: 40px 0 0;
             position: relative;
+            padding-left: 80px;
+            margin-left: -80px;
         }
 
         .phase-roadmap::before {
@@ -309,13 +309,17 @@
 
         .phase-card {
             display: flex;
-            gap: 24px;
-            padding: 28px 0;
+            gap: 20px;
+            padding: 24px;
             position: relative;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            transition: box-shadow 0.2s ease;
         }
 
-        .phase-card + .phase-card {
-            border-top: 1px solid rgba(0,102,204,0.1);
+        .phase-card:hover {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
 
         .phase-marker {
@@ -329,6 +333,8 @@
             font-weight: 700;
             z-index: 1;
             flex-shrink: 0;
+            position: absolute;
+            left: -80px;
         }
 
         .phase-card.defined .phase-marker {
@@ -353,21 +359,13 @@
             flex: 1;
         }
 
-        .phase-timeline-content h4 {
-            font-size: 20px;
-            margin-bottom: 6px;
+        .phase-timeline-content > .phase-header h4 {
+            font-size: 26px;
+            margin-bottom: 8px;
         }
 
-        .phase-card.defined .phase-timeline-content h4 {
+        .phase-header h4 {
             color: var(--brand-blue);
-        }
-
-        .phase-card.planned .phase-timeline-content h4 {
-            color: var(--dark-gray);
-        }
-
-        .phase-card.future .phase-timeline-content h4 {
-            color: var(--med-gray);
         }
 
         .phase-label {
@@ -396,6 +394,27 @@
             color: #999;
         }
 
+        .phase-header {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .phase-header h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phase-header:hover {
+            opacity: 0.8;
+        }
+
+        .phase-chevron {
+            font-size: 14px;
+            color: var(--med-gray);
+            flex-shrink: 0;
+        }
+
         .phase-timeline-content p {
             font-size: 16px;
             line-height: 1.6;
@@ -404,6 +423,50 @@
 
         .phase-card.future .phase-timeline-content p {
             color: var(--med-gray);
+        }
+
+        .phase-detail {
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .phase-detail h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+
+        .phase-detail h3:first-child {
+            margin-top: 0;
+        }
+
+        .phase-detail p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .phase-detail ul {
+            margin: 16px 0;
+        }
+
+        .phase-detail ul li {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .phase-card:not(.expanded) .phase-detail {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
         }
 
         .phase-status-pill {
@@ -518,30 +581,31 @@
         }
 
         .flow-number {
-            min-width: 80px;
-            height: 80px;
-            background: var(--brand-blue);
-            color: white;
+            min-width: 40px;
+            height: 40px;
+            background: rgba(0,102,204,0.1);
+            color: var(--brand-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 18px;
             font-weight: 700;
-            border-radius: 10px;
+            border-radius: 8px;
+            flex-shrink: 0;
         }
 
         .flow-content {
             flex: 1;
-            background: rgba(0,102,204,0.1);
+            background: rgba(0,0,0,0.02);
             padding: 20px;
             border-radius: 10px;
-            border: 1px solid rgba(0,102,204,0.3);
+            border: 1px solid rgba(0,0,0,0.08);
         }
 
         .flow-content h4 {
-            font-size: 22px;
+            font-size: 18px;
             margin-bottom: 10px;
-            color: var(--brand-blue);
+            color: var(--dark-gray);
         }
 
         .flow-content p {
@@ -558,9 +622,9 @@
 
         .flow-arrow {
             text-align: center;
-            font-size: 36px;
-            color: var(--brand-blue);
-            margin: 10px 0;
+            font-size: 24px;
+            color: var(--med-gray);
+            margin: 5px 0;
         }
 
         /* Process Steps */
@@ -1000,15 +1064,21 @@
                 grid-template-columns: 1fr;
             }
 
+            .phase-roadmap {
+                padding-left: 50px;
+                margin-left: -50px;
+            }
+
             .phase-card {
                 gap: 16px;
-                padding: 20px 0;
+                padding: 16px;
             }
 
             .phase-marker {
                 min-width: 40px;
                 height: 40px;
                 font-size: 12px;
+                left: -50px;
             }
 
             .phase-roadmap::before {
@@ -1096,316 +1166,295 @@
                 <h2>PROJECT PHASES</h2>
                 <p>A phased approach where each stage delivers value and builds on the last. All phases share the same data, the same AI engine, and the same foundation.</p>
 
-                <!-- Phase Timeline -->
+                <!-- Phase Timeline with Expandable Content -->
                 <div class="phase-roadmap">
-                    <div class="phase-card defined">
+                    <!-- Phase 1 -->
+                    <div class="phase-card defined" data-default="collapsed">
                         <div class="phase-marker">1</div>
                         <div class="phase-timeline-content">
-                            <span class="phase-label">Active</span>
-                            <h4>Phase 1: Internal AI Chatbot (Teams)</h4>
-                            <p>AI-powered assistant for city employees via Microsoft Teams, trained on approximately 70 to 95 publicly available city documents loaded into SharePoint.</p>
+                            <div class="phase-header">
+                                <span class="phase-label">Active</span>
+                                <h4><span class="phase-chevron">&#9654;</span> Phase 1: Internal AI Chatbot (Teams)</h4>
+                                <p>AI-powered assistant for city employees via Microsoft Teams, trained on approximately 70 to 95 publicly available city documents loaded into SharePoint.</p>
+                            </div>
+                            <div class="phase-detail">
+                                <p>An AI-powered assistant integrated directly into Microsoft Teams that city employees can ask questions in plain English. It searches a curated library of city documents and returns accurate, cited answers within seconds.</p>
+                                <p><strong>Who uses it:</strong> All 114 M365 users across city departments (desktop and mobile).</p>
+
+                                <div class="mockup-container">
+                                    <img src="product01.png" width="400" alt="Microsoft Teams interface showing the AI Assistant" style="max-width: 100%; height: auto;" />
+                                    <p style="margin-top: 20px; font-style: italic; color: var(--med-gray);">Microsoft Teams interface showing the AI Assistant in action</p>
+                                </div>
+
+                                <h3>How It Works</h3>
+                                <p>The system delivers answers in four simple steps:</p>
+                                <div class="flow-diagram">
+                                    <div class="flow-step">
+                                        <div class="flow-number">1</div>
+                                        <div class="flow-content">
+                                            <h4>Ask a Question</h4>
+                                            <p>Employee opens Microsoft Teams on phone or desktop and types or speaks a question:</p>
+                                            <p class="example">"What's the parking time limit on residential streets?"</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-step">
+                                        <div class="flow-number">2</div>
+                                        <div class="flow-content">
+                                            <h4>AI Processes Request</h4>
+                                            <p>The system searches your city's ordinances, policies, and procedures using advanced AI technology (GPT-4 or GPT-4o) to find relevant information.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-step">
+                                        <div class="flow-number">3</div>
+                                        <div class="flow-content">
+                                            <h4>Receive Cited Answer</h4>
+                                            <p>Within 2-4 seconds, the employee receives an accurate answer with citation:</p>
+                                            <p class="example">"Residential streets in Sartell have a 24-hour parking limit per City Ordinance 123.45, Section 3.2."</p>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-step">
+                                        <div class="flow-number">4</div>
+                                        <div class="flow-content">
+                                            <h4>Access Full Document</h4>
+                                            <p>If more detail is needed, a link provides instant access to the complete ordinance or policy document.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>User Experience Examples</h3>
+                                <div class="ux-example">
+                                    <h4>Scenario 1: Parking Enforcement</h4>
+                                    <div class="ux-input">
+                                        <p><strong>User Input:</strong> <em>"Can residents park RVs on their front lawn?"</em></p>
+                                    </div>
+                                    <div class="ux-output">
+                                        <p><strong>System Output:</strong> <em>"No, recreational vehicles (RVs) cannot be parked on front lawns in Sartell. Per City Ordinance 94.15, Section 2(B), RVs must be parked on approved driveways or in rear yards. Violators may be subject to a $100 fine for first offense. [View Full Ordinance]"</em></p>
+                                    </div>
+                                </div>
+                                <div class="ux-example">
+                                    <h4>Scenario 2: Noise Complaint</h4>
+                                    <div class="ux-input">
+                                        <p><strong>User Input:</strong> <em>"What time does the noise ordinance start on weekends?"</em></p>
+                                    </div>
+                                    <div class="ux-output">
+                                        <p><strong>System Output:</strong> <em>"On weekends (Friday and Saturday nights), the noise ordinance is in effect from 11:00 PM to 7:00 AM per City Ordinance 130.04, Section 3(A). During weekdays, the quiet hours are 10:00 PM to 7:00 AM. Excessive noise during these hours may result in citations. [View Full Ordinance]"</em></p>
+                                    </div>
+                                </div>
+
+                                <h3>Key Features</h3>
+                                <ul>
+                                    <li><strong>Microsoft Teams Integration:</strong> Works seamlessly within the app employees already use daily</li>
+                                    <li><strong>Mobile + Desktop Access:</strong> Available on phones, tablets, and computers</li>
+                                    <li><strong>Voice Input Support:</strong> Hands-free operation for field staff</li>
+                                    <li><strong>Always Cites Sources:</strong> Every answer includes the specific ordinance or policy reference</li>
+                                    <li><strong>Fast Response Times:</strong> Answers delivered in 2-4 seconds</li>
+                                    <li><strong>Secure and Private:</strong> Searches your city's approved documents</li>
+                                </ul>
+
+                                <h3>Implementation Progress</h3>
+                                <div class="process-steps">
+                                    <div class="process-step completed">
+                                        <div class="process-step-number">&#10003;</div>
+                                        <span class="status-badge">Complete</span>
+                                        <h4>User Research and Discovery</h4>
+                                        <p>Scope defined with city technology and operations leadership in February 2026. Phase 1 data set identified: approximately 70 to 95 publicly available city documents across city code, policies, building guides, and more.</p>
+                                    </div>
+                                    <div class="process-step in-progress">
+                                        <div class="process-step-number">2</div>
+                                        <span class="status-badge">In Progress</span>
+                                        <h4>Council Approval and Contract</h4>
+                                        <p>Present the project plan to city council for approval and finalize the formal agreement to begin the build phase.</p>
+                                    </div>
+                                    <div class="process-step upcoming">
+                                        <div class="process-step-number">3</div>
+                                        <span class="status-badge">Upcoming</span>
+                                        <h4>Data Collection and Upload</h4>
+                                        <p>Approximately 70 to 95 public documents identified and cataloged from sartellmn.com. Download, verification, and SharePoint upload underway.</p>
+                                    </div>
+                                    <div class="process-step upcoming">
+                                        <div class="process-step-number">4</div>
+                                        <span class="status-badge">Upcoming</span>
+                                        <h4>UX Design and Integration</h4>
+                                        <p>Design the conversational experience and connect GPT-4o, SharePoint, and Copilot Studio services within the city's existing Microsoft 365 environment.</p>
+                                    </div>
+                                    <div class="process-step upcoming">
+                                        <div class="process-step-number">5</div>
+                                        <span class="status-badge">Upcoming</span>
+                                        <h4>QA and Testing</h4>
+                                        <p>Rigorous testing with city staff to ensure accuracy, response quality, and system reliability before broader rollout.</p>
+                                    </div>
+                                    <div class="process-step upcoming">
+                                        <div class="process-step-number">6</div>
+                                        <span class="status-badge">Upcoming</span>
+                                        <h4>Deployment and Expansion</h4>
+                                        <p>Deploy to an initial pilot group, gather feedback, refine responses, then roll out to all departments with training materials and best practices.</p>
+                                    </div>
+                                </div>
+
+                                <h3>Data Source</h3>
+                                <p>Approximately 70 to 95 publicly available documents from sartellmn.com, stored in a SharePoint document library.</p>
+
+                                <h3>Key Decisions</h3>
+                                <ul>
+                                    <li>Laserfiche excluded from this phase (records retention cleanup needed first)</li>
+                                    <li>Website content only (official, final documents)</li>
+                                    <li>Internal facing only (employees, not residents)</li>
+                                    <li>Microsoft/Teams approach endorsed by city IT leadership</li>
+                                </ul>
+
+                                <p><strong>Timeline:</strong> 4 to 6 weeks from receiving M365 access. Council approval is the next step.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="phase-card planned">
+                    <!-- Phase 2 -->
+                    <div class="phase-card planned" data-default="collapsed">
                         <div class="phase-marker">2</div>
                         <div class="phase-timeline-content">
-                            <span class="phase-label">Planned</span>
-                            <h4>Phase 2: Internal Knowledge Base Build-Out</h4>
-                            <p>Discover, audit, and onboard internal city documents (HR policies, department procedures, administrative guidelines) into the AI system.</p>
+                            <div class="phase-header">
+                                <span class="phase-label">Planned</span>
+                                <h4><span class="phase-chevron">&#9654;</span> Phase 2: Internal Knowledge Base Build-Out</h4>
+                                <p>Discover, audit, and onboard internal city documents (HR policies, department procedures, administrative guidelines) into the AI system.</p>
+                            </div>
+                            <div class="phase-detail">
+                                <p>A dedicated engagement to discover, audit, organize, and onboard the city's internal documents into the AI system. This transforms the bot from a public-information tool into a comprehensive internal knowledge assistant covering HR policies, department procedures, administrative guidelines, and operational documents.</p>
+
+                                <h3>Why This Is a Separate Phase</h3>
+                                <p>Phase 1 uses publicly available website content that is already published, organized, and considered final. Phase 2 involves fundamentally different work:</p>
+                                <ul>
+                                    <li><strong>Discovery and stakeholder coordination.</strong> Meeting with each department head to identify what documents exist, where they live, and what gaps need to be flagged.</li>
+                                    <li><strong>Content audit and readiness assessment.</strong> Assessing internal documents for accuracy, relevance, and inclusion. Some departments may discover their SOPs haven't been written yet.</li>
+                                    <li><strong>Information architecture.</strong> Designing the SharePoint structure for internal documents with proper metadata, categorization, and access controls.</li>
+                                    <li><strong>Bot retraining and conversation tuning.</strong> New topic areas need testing. The bot needs to handle questions spanning both public and internal content.</li>
+                                    <li><strong>Validation and testing.</strong> Each department's content tested with real queries before rollout.</li>
+                                </ul>
+
+                                <h3>Candidate Document Categories</h3>
+                                <p><strong>HR and Employee Resources (high priority):</strong></p>
+                                <ul>
+                                    <li>Employee handbook</li>
+                                    <li>Bargaining agreements</li>
+                                    <li>Benefits information</li>
+                                    <li>Onboarding procedures and checklists</li>
+                                    <li>Time-off and leave policies</li>
+                                </ul>
+                                <p><strong>Administrative Policies and Procedures:</strong></p>
+                                <ul>
+                                    <li>Purchasing and procurement</li>
+                                    <li>Travel and reimbursement</li>
+                                    <li>Acceptable use policies</li>
+                                </ul>
+                                <p><strong>Department-Specific Content:</strong></p>
+                                <ul>
+                                    <li>Brand guide and marketing standards</li>
+                                    <li>Inspection checklists and interpretation guides</li>
+                                    <li>Standard operating procedures (Public Works)</li>
+                                    <li>Internal finance procedures</li>
+                                </ul>
+                                <p><strong>Public Safety (requires separate discovery):</strong></p>
+                                <ul>
+                                    <li>Police department policy manual</li>
+                                    <li>Fire and life safety procedures</li>
+                                    <li>Note: PD operates on county servers, not city M365</li>
+                                </ul>
+
+                                <h3>Deliverables</h3>
+                                <ul>
+                                    <li>Department-by-department content audit</li>
+                                    <li>Organized SharePoint document library with access controls</li>
+                                    <li>Updated bot with expanded knowledge base</li>
+                                    <li>Testing and validation across all new content areas</li>
+                                    <li>Documentation of gaps (documents departments need but don't yet have)</li>
+                                </ul>
+
+                                <p><strong>Pricing:</strong> To be scoped after Phase 1 is underway and initial discovery conversations happen.</p>
+                                <p><strong>Timeline:</strong> Discovery can begin during Phase 1 build. Full build-out begins after Phase 1 is stable.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="phase-card future">
+                    <!-- Phase 3 -->
+                    <div class="phase-card future" data-default="collapsed">
                         <div class="phase-marker">3</div>
                         <div class="phase-timeline-content">
-                            <span class="phase-label">Future</span>
-                            <h4>Phase 3: External AI Chatbot (Website)</h4>
-                            <p>Public-facing chatbot on sartellmn.com for residents, visitors, and businesses.</p>
+                            <div class="phase-header">
+                                <span class="phase-label">Future</span>
+                                <h4><span class="phase-chevron">&#9654;</span> Phase 3: External AI Chatbot (Website)</h4>
+                                <p>Public-facing chatbot on sartellmn.com for residents, visitors, and businesses.</p>
+                            </div>
+                            <div class="phase-detail">
+                                <p>A public-facing version of the chatbot deployed on sartellmn.com. Residents, visitors, and businesses ask questions and get answers drawn from the city's published information.</p>
+
+                                <h3>Why It Follows Phase 2</h3>
+                                <p>By the time Phase 3 starts, the internal bot will have been tested, tuned, and improved by city employees across a broad set of documents. Those learnings directly improve the resident-facing version.</p>
+
+                                <p><strong>Who uses it:</strong> Residents, visitors, businesses, anyone on the city website.</p>
+
+                                <h3>Key Considerations</h3>
+                                <ul>
+                                    <li>Deployment method (embedded chat widget, standalone page, or both)</li>
+                                    <li>Escalation path when the bot can't answer (phone, email, or department contact)</li>
+                                    <li>Accessibility compliance (ADA requirements)</li>
+                                    <li>Branding and tone (the bot represents the city to the public)</li>
+                                    <li>The "common questions" list being built by city staff feeds into this</li>
+                                </ul>
+
+                                <p><strong>Data source:</strong> Same public content from Phases 1 and 2 (internal-only documents are excluded from the public bot).</p>
+                                <p><strong>Pricing:</strong> To be scoped.</p>
+                                <p><strong>Timeline:</strong> After Phase 1 is stable and the internal team is comfortable with the system.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="phase-card future">
+                    <!-- Phase 4 -->
+                    <div class="phase-card future" data-default="collapsed">
                         <div class="phase-marker">4</div>
                         <div class="phase-timeline-content">
-                            <span class="phase-label">Future</span>
-                            <h4>Phase 4: AI Voice Phone System</h4>
-                            <p>AI-powered phone system for incoming calls, common questions, and call routing.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phase 1 -->
-                <div class="collapsible-section expanded" data-default="expanded">
-                    <div class="collapsible-header">
-                        <span class="collapsible-chevron">&#9660;</span>
-                        <h3>Phase 1: Internal AI Chatbot (Teams)</h3>
-                        <span class="phase-status-pill status-active">Active</span>
-                    </div>
-                    <div class="collapsible-content">
-                        <p>An AI-powered assistant integrated directly into Microsoft Teams that city employees can ask questions in plain English. It searches a curated library of city documents and returns accurate, cited answers within seconds.</p>
-                        <p><strong>Who uses it:</strong> All 114 M365 users across city departments (desktop and mobile).</p>
-
-                        <div class="mockup-container">
-                            <img src="product01.png" width="400" alt="Microsoft Teams interface showing the AI Assistant" style="max-width: 100%; height: auto;" />
-                            <p style="margin-top: 20px; font-style: italic; color: var(--med-gray);">Microsoft Teams interface showing the AI Assistant in action</p>
-                        </div>
-
-                        <h4>How It Works</h4>
-                        <p>The system delivers answers in four simple steps:</p>
-                        <div class="flow-diagram">
-                            <div class="flow-step">
-                                <div class="flow-number">1</div>
-                                <div class="flow-content">
-                                    <h4>Ask a Question</h4>
-                                    <p>Employee opens Microsoft Teams on phone or desktop and types or speaks a question:</p>
-                                    <p class="example">"What's the parking time limit on residential streets?"</p>
-                                </div>
+                            <div class="phase-header">
+                                <span class="phase-label">Future</span>
+                                <h4><span class="phase-chevron">&#9654;</span> Phase 4: AI Voice Phone System</h4>
+                                <p>AI-powered phone system for incoming calls, common questions, and call routing.</p>
                             </div>
-                            <div class="flow-arrow">&#8595;</div>
-                            <div class="flow-step">
-                                <div class="flow-number">2</div>
-                                <div class="flow-content">
-                                    <h4>AI Processes Request</h4>
-                                    <p>The system searches your city's ordinances, policies, and procedures using advanced AI technology (GPT-4 or GPT-4o) to find relevant information.</p>
-                                </div>
-                            </div>
-                            <div class="flow-arrow">&#8595;</div>
-                            <div class="flow-step">
-                                <div class="flow-number">3</div>
-                                <div class="flow-content">
-                                    <h4>Receive Cited Answer</h4>
-                                    <p>Within 2-4 seconds, the employee receives an accurate answer with citation:</p>
-                                    <p class="example">"Residential streets in Sartell have a 24-hour parking limit per City Ordinance 123.45, Section 3.2."</p>
-                                </div>
-                            </div>
-                            <div class="flow-arrow">&#8595;</div>
-                            <div class="flow-step">
-                                <div class="flow-number">4</div>
-                                <div class="flow-content">
-                                    <h4>Access Full Document</h4>
-                                    <p>If more detail is needed, a link provides instant access to the complete ordinance or policy document.</p>
-                                </div>
+                            <div class="phase-detail">
+                                <p>An AI-powered phone system that answers incoming calls, handles common questions via voice, and routes to the right person when needed. This replaces or supplements the traditional phone tree with a conversational AI experience.</p>
+
+                                <h3>Use Cases Identified from Gap Assessment</h3>
+                                <ul>
+                                    <li>Utility billing questions</li>
+                                    <li>Compost site inquiries</li>
+                                    <li>General city information (hours, locations, departments)</li>
+                                    <li>Non-emergency public safety questions</li>
+                                    <li>Routing callers to the correct department or person</li>
+                                </ul>
+
+                                <h3>How It Connects</h3>
+                                <p>The knowledge base built and refined across Phases 1 through 3 feeds directly into the voice system. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction: concise responses, clear confirmation flows, and graceful handoff to a human when needed.</p>
+
+                                <h3>Technology to Explore</h3>
+                                <ul>
+                                    <li>Microsoft Teams Phone with Copilot Studio (stays in M365 ecosystem)</li>
+                                    <li>Dedicated voice AI platforms</li>
+                                </ul>
+
+                                <p><strong>Pricing:</strong> To be scoped after platform selection and research.</p>
+                                <p><strong>Timeline:</strong> Research can begin during earlier phases. Build after Phase 3.</p>
                             </div>
                         </div>
-
-                        <h4>User Experience Examples</h4>
-                        <div class="ux-example">
-                            <h4>Scenario 1: Parking Enforcement</h4>
-                            <div class="ux-input">
-                                <p><strong>User Input:</strong> <em>"Can residents park RVs on their front lawn?"</em></p>
-                            </div>
-                            <div class="ux-output">
-                                <p><strong>System Output:</strong> <em>"No, recreational vehicles (RVs) cannot be parked on front lawns in Sartell. Per City Ordinance 94.15, Section 2(B), RVs must be parked on approved driveways or in rear yards. Violators may be subject to a $100 fine for first offense. [View Full Ordinance]"</em></p>
-                            </div>
-                        </div>
-                        <div class="ux-example">
-                            <h4>Scenario 2: Noise Complaint</h4>
-                            <div class="ux-input">
-                                <p><strong>User Input:</strong> <em>"What time does the noise ordinance start on weekends?"</em></p>
-                            </div>
-                            <div class="ux-output">
-                                <p><strong>System Output:</strong> <em>"On weekends (Friday and Saturday nights), the noise ordinance is in effect from 11:00 PM to 7:00 AM per City Ordinance 130.04, Section 3(A). During weekdays, the quiet hours are 10:00 PM to 7:00 AM. Excessive noise during these hours may result in citations. [View Full Ordinance]"</em></p>
-                            </div>
-                        </div>
-
-                        <h4>Key Features</h4>
-                        <ul>
-                            <li><strong>Microsoft Teams Integration:</strong> Works seamlessly within the app employees already use daily</li>
-                            <li><strong>Mobile + Desktop Access:</strong> Available on phones, tablets, and computers</li>
-                            <li><strong>Voice Input Support:</strong> Hands-free operation for field staff</li>
-                            <li><strong>Always Cites Sources:</strong> Every answer includes the specific ordinance or policy reference</li>
-                            <li><strong>Fast Response Times:</strong> Answers delivered in 2-4 seconds</li>
-                            <li><strong>Secure and Private:</strong> Searches your city's approved documents</li>
-                        </ul>
-
-                        <h4>Implementation Progress</h4>
-                        <div class="process-steps">
-                            <div class="process-step completed">
-                                <div class="process-step-number">&#10003;</div>
-                                <span class="status-badge">Complete</span>
-                                <h4>User Research and Discovery</h4>
-                                <p>Scope defined with city technology and operations leadership in February 2026. Phase 1 data set identified: approximately 70 to 95 publicly available city documents across city code, policies, building guides, and more.</p>
-                            </div>
-                            <div class="process-step in-progress">
-                                <div class="process-step-number">2</div>
-                                <span class="status-badge">In Progress</span>
-                                <h4>Council Approval and Contract</h4>
-                                <p>Present the project plan to city council for approval and finalize the formal agreement to begin the build phase.</p>
-                            </div>
-                            <div class="process-step upcoming">
-                                <div class="process-step-number">3</div>
-                                <span class="status-badge">Upcoming</span>
-                                <h4>Data Collection and Upload</h4>
-                                <p>Approximately 70 to 95 public documents identified and cataloged from sartellmn.com. Download, verification, and SharePoint upload underway.</p>
-                            </div>
-                            <div class="process-step upcoming">
-                                <div class="process-step-number">4</div>
-                                <span class="status-badge">Upcoming</span>
-                                <h4>UX Design and Integration</h4>
-                                <p>Design the conversational experience and connect GPT-4o, SharePoint, and Copilot Studio services within the city's Microsoft 365 environment.</p>
-                            </div>
-                            <div class="process-step upcoming">
-                                <div class="process-step-number">5</div>
-                                <span class="status-badge">Upcoming</span>
-                                <h4>QA and Testing</h4>
-                                <p>Rigorous testing with city staff to ensure accuracy, response quality, and system reliability before broader rollout.</p>
-                            </div>
-                            <div class="process-step upcoming">
-                                <div class="process-step-number">6</div>
-                                <span class="status-badge">Upcoming</span>
-                                <h4>Deployment and Expansion</h4>
-                                <p>Deploy to an initial pilot group, gather feedback, refine responses, then roll out to all departments with training materials and best practices.</p>
-                            </div>
-                        </div>
-
-                        <h4>Data Source</h4>
-                        <p>Approximately 70 to 95 publicly available documents from sartellmn.com, stored in a SharePoint document library.</p>
-
-                        <h4>Key Decisions</h4>
-                        <ul>
-                            <li>Laserfiche excluded from this phase (records retention cleanup needed first)</li>
-                            <li>Website content only (official, final documents)</li>
-                            <li>Internal facing only (employees, not residents)</li>
-                            <li>Microsoft/Teams approach endorsed by city IT leadership</li>
-                        </ul>
-
-                        <p><strong>Timeline:</strong> 4 to 6 weeks from receiving M365 access. Council approval is the next step.</p>
-                    </div>
-                </div>
-
-                <!-- Phase 2 -->
-                <div class="collapsible-section" data-default="collapsed">
-                    <div class="collapsible-header">
-                        <span class="collapsible-chevron">&#9654;</span>
-                        <h3>Phase 2: Internal Knowledge Base Build-Out</h3>
-                        <span class="phase-status-pill status-planned">Planned</span>
-                    </div>
-                    <div class="collapsible-content">
-                        <p>A dedicated engagement to discover, audit, organize, and onboard the city's internal documents into the AI system. This transforms the bot from a public-information tool into a comprehensive internal knowledge assistant covering HR policies, department procedures, administrative guidelines, and operational documents.</p>
-
-                        <h4>Why This Is a Separate Phase</h4>
-                        <p>Phase 1 uses publicly available website content that is already published, organized, and considered final. Phase 2 involves fundamentally different work:</p>
-                        <ul>
-                            <li><strong>Discovery and stakeholder coordination.</strong> Meeting with each department head to identify what documents exist, where they live, and what gaps need to be flagged.</li>
-                            <li><strong>Content audit and readiness assessment.</strong> Assessing internal documents for accuracy, relevance, and inclusion. Some departments may discover their SOPs haven't been written yet.</li>
-                            <li><strong>Information architecture.</strong> Designing the SharePoint structure for internal documents with proper metadata, categorization, and access controls.</li>
-                            <li><strong>Bot retraining and conversation tuning.</strong> New topic areas need testing. The bot needs to handle questions spanning both public and internal content.</li>
-                            <li><strong>Validation and testing.</strong> Each department's content tested with real queries before rollout.</li>
-                        </ul>
-
-                        <h4>Candidate Document Categories</h4>
-                        <p><strong>HR and Employee Resources (high priority):</strong></p>
-                        <ul>
-                            <li>Employee handbook</li>
-                            <li>Bargaining agreements</li>
-                            <li>Benefits information</li>
-                            <li>Onboarding procedures and checklists</li>
-                            <li>Time-off and leave policies</li>
-                        </ul>
-                        <p><strong>Administrative Policies and Procedures:</strong></p>
-                        <ul>
-                            <li>Purchasing and procurement</li>
-                            <li>Travel and reimbursement</li>
-                            <li>Acceptable use policies</li>
-                        </ul>
-                        <p><strong>Department-Specific Content:</strong></p>
-                        <ul>
-                            <li>Brand guide and marketing standards</li>
-                            <li>Inspection checklists and interpretation guides</li>
-                            <li>Standard operating procedures (Public Works)</li>
-                            <li>Internal finance procedures</li>
-                        </ul>
-                        <p><strong>Public Safety (requires separate discovery):</strong></p>
-                        <ul>
-                            <li>Police department policy manual</li>
-                            <li>Fire and life safety procedures</li>
-                            <li>Note: PD operates on county servers, not city M365</li>
-                        </ul>
-
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>Department-by-department content audit</li>
-                            <li>Organized SharePoint document library with access controls</li>
-                            <li>Updated bot with expanded knowledge base</li>
-                            <li>Testing and validation across all new content areas</li>
-                            <li>Documentation of gaps (documents departments need but don't yet have)</li>
-                        </ul>
-
-                        <p><strong>Pricing:</strong> To be scoped after Phase 1 is underway and initial discovery conversations happen.</p>
-                        <p><strong>Timeline:</strong> Discovery can begin during Phase 1 build. Full build-out begins after Phase 1 is stable.</p>
-                    </div>
-                </div>
-
-                <!-- Phase 3 -->
-                <div class="collapsible-section" data-default="collapsed">
-                    <div class="collapsible-header">
-                        <span class="collapsible-chevron">&#9654;</span>
-                        <h3>Phase 3: External AI Chatbot (Website)</h3>
-                        <span class="phase-status-pill status-future">Future</span>
-                    </div>
-                    <div class="collapsible-content">
-                        <p>A public-facing version of the chatbot deployed on sartellmn.com. Residents, visitors, and businesses ask questions and get answers drawn from the city's published information.</p>
-
-                        <h4>Why It Follows Phase 2</h4>
-                        <p>By the time Phase 3 starts, the internal bot will have been tested, tuned, and improved by city employees across a broad set of documents. Those learnings directly improve the resident-facing version.</p>
-
-                        <p><strong>Who uses it:</strong> Residents, visitors, businesses, anyone on the city website.</p>
-
-                        <h4>Key Considerations</h4>
-                        <ul>
-                            <li>Deployment method (embedded chat widget, standalone page, or both)</li>
-                            <li>Escalation path when the bot can't answer (phone, email, or department contact)</li>
-                            <li>Accessibility compliance (ADA requirements)</li>
-                            <li>Branding and tone (the bot represents the city to the public)</li>
-                            <li>The "common questions" list being built by city staff feeds into this</li>
-                        </ul>
-
-                        <p><strong>Data source:</strong> Same public content from Phases 1 and 2 (internal-only documents are excluded from the public bot).</p>
-                        <p><strong>Pricing:</strong> To be scoped.</p>
-                        <p><strong>Timeline:</strong> After Phase 1 is stable and the internal team is comfortable with the system.</p>
-                    </div>
-                </div>
-
-                <!-- Phase 4 -->
-                <div class="collapsible-section" data-default="collapsed">
-                    <div class="collapsible-header">
-                        <span class="collapsible-chevron">&#9654;</span>
-                        <h3>Phase 4: AI Voice Phone System</h3>
-                        <span class="phase-status-pill status-future">Future</span>
-                    </div>
-                    <div class="collapsible-content">
-                        <p>An AI-powered phone system that answers incoming calls, handles common questions via voice, and routes to the right person when needed. This replaces or supplements the traditional phone tree with a conversational AI experience.</p>
-
-                        <h4>Use Cases Identified from Gap Assessment</h4>
-                        <ul>
-                            <li>Utility billing questions</li>
-                            <li>Compost site inquiries</li>
-                            <li>General city information (hours, locations, departments)</li>
-                            <li>Non-emergency public safety questions</li>
-                            <li>Routing callers to the correct department or person</li>
-                        </ul>
-
-                        <h4>How It Connects</h4>
-                        <p>The knowledge base built and refined across Phases 1 through 3 feeds directly into the voice system. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction: concise responses, clear confirmation flows, and graceful handoff to a human when needed.</p>
-
-                        <h4>Technology to Explore</h4>
-                        <ul>
-                            <li>Microsoft Teams Phone with Copilot Studio (stays in M365 ecosystem)</li>
-                            <li>Dedicated voice AI platforms</li>
-                        </ul>
-
-                        <p><strong>Pricing:</strong> To be scoped after platform selection and research.</p>
-                        <p><strong>Timeline:</strong> Research can begin during earlier phases. Build after Phase 3.</p>
                     </div>
                 </div>
 
                 <!-- Additional Workstream -->
                 <div class="collapsible-section workstream-spacer" data-default="collapsed">
-                    <div class="collapsible-header">
-                        <span class="collapsible-chevron">&#9654;</span>
-                        <h3>Additional Workstream: Ticketing and Work Order System</h3>
-                        <span class="phase-status-pill status-discovery">In Discovery</span>
+                    <div class="collapsible-header" style="flex-direction: column; align-items: flex-start;">
+                        <span class="phase-label" style="background: rgba(0,0,0,0.06); color: var(--med-gray);">In Discovery</span>
+                        <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+                            <span class="collapsible-chevron">&#9654;</span>
+                            <h3 style="color: var(--brand-blue); font-size: 26px;">Additional Workstream: Ticketing and Work Order System</h3>
+                        </div>
+                        <p style="font-size: 16px; line-height: 1.6; margin: 0; color: var(--med-gray);">Centralized ticketing and work order system with AI-powered intake, routing, and status tracking.</p>
                     </div>
                     <div class="collapsible-content">
                         <p>The gap assessment identified a strong desire across nearly every department for a centralized ticketing and work order system with structured intake, workflow routing, status tracking, and a supervisor dashboard.</p>
@@ -1645,6 +1694,58 @@
                 section.classList.add('expanded');
                 content.style.maxHeight = 'none';
                 content.style.opacity = '1';
+            }
+        });
+
+        // Phase card expand/collapse
+        document.querySelectorAll('.phase-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const card = this.closest('.phase-card');
+                const detail = card.querySelector('.phase-detail');
+                const chevron = this.querySelector('.phase-chevron');
+
+                if (card.classList.contains('expanded')) {
+                    card.classList.remove('expanded');
+                    detail.style.maxHeight = '0';
+                    detail.style.opacity = '0';
+                    chevron.innerHTML = '&#9654;';
+                } else {
+                    card.classList.add('expanded');
+                    detail.style.maxHeight = detail.scrollHeight + 'px';
+                    detail.style.opacity = '1';
+                    chevron.innerHTML = '&#9660;';
+                    setTimeout(() => {
+                        if (card.classList.contains('expanded')) {
+                            detail.style.maxHeight = 'none';
+                        }
+                    }, 400);
+                }
+            });
+        });
+
+        // Initialize phase cards
+        document.querySelectorAll('.phase-card[data-default]').forEach(card => {
+            const detail = card.querySelector('.phase-detail');
+            const chevron = card.querySelector('.phase-chevron');
+            if (card.dataset.default === 'collapsed') {
+                card.classList.remove('expanded');
+                detail.style.maxHeight = '0';
+                detail.style.opacity = '0';
+            } else {
+                card.classList.add('expanded');
+                detail.style.maxHeight = 'none';
+                detail.style.opacity = '1';
+                if (chevron) chevron.innerHTML = '&#9660;';
+            }
+        });
+
+        // Center markers to collapsed card height (runs after init)
+        document.querySelectorAll('.phase-card[data-default]').forEach(card => {
+            const marker = card.querySelector('.phase-marker');
+            const header = card.querySelector('.phase-header');
+            if (marker && header) {
+                const headerHeight = header.offsetHeight + 48; // header + card padding
+                marker.style.top = (headerHeight / 2 - 25) + 'px'; // 25 = half marker height
             }
         });
     </script>
