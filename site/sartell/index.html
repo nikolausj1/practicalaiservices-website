@@ -1183,7 +1183,7 @@
                                 <p>AI-powered assistant for city employees via Microsoft Teams, trained on approximately 70 to 95 publicly available city documents loaded into SharePoint.</p>
                             </div>
                             <div class="phase-detail">
-                                <p>An AI-powered assistant integrated directly into Microsoft Teams that city employees can ask questions in plain English. It searches a curated library of city documents and returns accurate, cited answers within seconds.</p>
+                                <p>An AI-powered assistant integrated directly into Microsoft Teams that city employees can ask questions in plain English. It searches a curated library of city documents and returns accurate, cited answers within seconds. Phase 1 also establishes the multi-phase platform architecture: the knowledge base structure, indexing approach, conversation framework, and deployment architecture are all designed for extensibility into Phases 2 through 4.</p>
                                 <p><strong>Who uses it:</strong> All 114 M365 users across city departments (desktop and mobile).</p>
 
                                 <div class="mockup-container">
@@ -1310,7 +1310,8 @@
                                     <li>Microsoft/Teams approach endorsed by city IT leadership</li>
                                 </ul>
 
-                                <p><strong>Timeline:</strong> 4 to 6 weeks from receiving M365 access. Council approval is the next step.</p>
+                                <p><strong>Estimated investment:</strong> $24,000</p>
+                                <p><strong>Timeline:</strong> Approximately 3 months from receiving M365 access. Council approval is the next step.</p>
                             </div>
                         </div>
                     </div>
@@ -1375,7 +1376,7 @@
                                     <li>Documentation of gaps (documents departments need but don't yet have)</li>
                                 </ul>
 
-                                <p><strong>Pricing:</strong> To be scoped after Phase 1 is underway and initial discovery conversations happen.</p>
+                                <p><strong>Estimated investment:</strong> $22,000</p>
                                 <p><strong>Timeline:</strong> Discovery can begin during Phase 1 build. Full build-out begins after Phase 1 is stable.</p>
                             </div>
                         </div>
@@ -1393,22 +1394,24 @@
                             <div class="phase-detail">
                                 <p>A public-facing version of the chatbot deployed on sartellmn.com. Residents, visitors, and businesses ask questions and get answers drawn from the city's published information.</p>
 
-                                <h3>Why It Follows Phase 2</h3>
-                                <p>By the time Phase 3 starts, the internal bot will have been tested, tuned, and improved by city employees across a broad set of documents. Those learnings directly improve the resident-facing version.</p>
+                                <h3>Why Public-Facing Changes Everything</h3>
+                                <p>When an internal bot gives a bad answer, an employee corrects it and moves on. When a public-facing bot gives a bad answer, it is the City of Sartell that said it. That answer could end up in a council meeting, on social media, or in local news. The public bot also introduces legal and compliance considerations that the internal bot does not: accessibility requirements, FOIA implications for conversations with residents, and the need for clear boundaries on topics the bot should not touch. The technical foundation from Phase 1 carries forward, but the conversation design, testing, and risk management are substantially different work.</p>
 
                                 <p><strong>Who uses it:</strong> Residents, visitors, businesses, anyone on the city website.</p>
 
-                                <h3>Key Considerations</h3>
+                                <h3>Scope</h3>
                                 <ul>
-                                    <li>Deployment method (embedded chat widget, standalone page, or both)</li>
-                                    <li>Escalation path when the bot can't answer (phone, email, or department contact)</li>
-                                    <li>Accessibility compliance (ADA requirements)</li>
-                                    <li>Branding and tone (the bot represents the city to the public)</li>
-                                    <li>The "common questions" list being built by city staff feeds into this</li>
+                                    <li><strong>Website integration and deployment.</strong> Embedded chat widget or standalone page on sartellmn.com, coordinated with the city's website platform (Revize). Includes mobile responsive design, cross-browser testing, and ensuring the bot loads reliably across devices.</li>
+                                    <li><strong>Conversation design for public audience.</strong> Residents ask questions differently than city employees. This requires redesigning how the bot maps everyday language to city information, building escalation paths for each department, designing flows for common questions from the list the city is building, and handling edge cases gracefully (political questions, complaints, off-topic requests).</li>
+                                    <li><strong>Content scoping and access controls.</strong> Ensuring internal documents from Phase 2 never surface in the public bot. The content boundary between what employees see and what residents see must be carefully defined and tested.</li>
+                                    <li><strong>Legal, accessibility, and compliance.</strong> ADA compliance for the chat interface, disclaimer language, FOIA implications for bot conversations with the public, and clear boundaries for topics the bot will not address.</li>
+                                    <li><strong>Branding and tone alignment.</strong> The bot represents the city to residents. Voice, personality, and response style need to align with how the city communicates publicly.</li>
+                                    <li><strong>Multilingual considerations.</strong> Graceful handling of non-English input, even without full multilingual support.</li>
+                                    <li><strong>Adversarial testing and monitored launch.</strong> Testing for misuse scenarios (attempts to get the bot to say something inappropriate), a soft launch with active monitoring, and first-week tuning based on real resident interactions.</li>
                                 </ul>
 
                                 <p><strong>Data source:</strong> Same public content from Phases 1 and 2 (internal-only documents are excluded from the public bot).</p>
-                                <p><strong>Pricing:</strong> To be scoped.</p>
+                                <p><strong>Estimated investment:</strong> $25,000</p>
                                 <p><strong>Timeline:</strong> After Phase 1 is stable and the internal team is comfortable with the system.</p>
                             </div>
                         </div>
@@ -1426,6 +1429,9 @@
                             <div class="phase-detail">
                                 <p>An AI-powered phone system that answers incoming calls, handles common questions via voice, and routes to the right person when needed. This replaces or supplements the traditional phone tree with a conversational AI experience.</p>
 
+                                <h3>Why Voice Is Different</h3>
+                                <p>Voice AI is fundamentally different from text. Every second of silence on a phone call feels broken. When a caller mishears or is misheard, there is no message to re-read. Callers interrupt, change their mind mid-sentence, and expect the system to keep up. Designing for voice requires handling barge-in (when callers talk over the bot), progressive error recovery, confirmation loops, and natural turn-taking. The quality bar is higher because a bad phone experience with the city feels worse than a bad chat experience.</p>
+
                                 <h3>Use Cases Identified from Gap Assessment</h3>
                                 <ul>
                                     <li>Utility billing questions</li>
@@ -1435,16 +1441,20 @@
                                     <li>Routing callers to the correct department or person</li>
                                 </ul>
 
-                                <h3>How It Connects</h3>
-                                <p>The knowledge base built and refined across Phases 1 through 3 feeds directly into the voice system. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction: concise responses, clear confirmation flows, and graceful handoff to a human when needed.</p>
-
-                                <h3>Technology to Explore</h3>
+                                <h3>Scope</h3>
                                 <ul>
-                                    <li>Microsoft Teams Phone with Copilot Studio (stays in M365 ecosystem)</li>
-                                    <li>Dedicated voice AI platforms</li>
+                                    <li><strong>Platform research and evaluation.</strong> Evaluate multiple platforms (Microsoft Teams Phone with Copilot Studio, dedicated voice AI platforms like Bland.ai, Vapi, Retell AI), prototype against Sartell scenarios, and prepare a recommendation. Platform selection significantly affects scope and cost.</li>
+                                    <li><strong>Voice conversation design.</strong> Each common question from the list the city is building needs its own voice flow with recognition variants, confirmation logic, follow-ups, and escalation paths. Call routing with warm transfer to the right department, passing context so the caller does not have to repeat themselves. Error recovery that progresses naturally: gentle rephrase, then alternatives, then human handoff.</li>
+                                    <li><strong>Voice persona development.</strong> Pacing, tone, pause timing, and warmth. This is not just picking a voice from a dropdown. The persona needs to feel helpful and professional across every type of call.</li>
+                                    <li><strong>Phone system integration.</strong> Connect to Sartell's existing phone infrastructure, configure SIP/trunk routing, number management, after-hours and holiday routing, and failover design (what happens when the AI platform goes down).</li>
+                                    <li><strong>Knowledge base optimization for voice.</strong> Spoken responses need to be fundamentally different from text responses. Shorter, clearer, and designed for listening. Complex answers may need voice-to-email or voice-to-text bridges so callers can receive detailed information after the call.</li>
+                                    <li><strong>Testing and monitored launch.</strong> Every flow must be listened to, not just read. Speech recognition accuracy across conditions (background noise, accents, cell vs. landline), latency testing, adversarial testing, and a two-week monitored launch period.</li>
                                 </ul>
 
-                                <p><strong>Pricing:</strong> To be scoped after platform selection and research.</p>
+                                <h3>How It Connects</h3>
+                                <p>The knowledge base built and refined across Phases 1 through 3 feeds directly into the voice system. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction.</p>
+
+                                <p><strong>Estimated investment:</strong> $28,000. These are early estimates that will be refined as Phases 1 through 3 progress and more is known about Sartell's phone infrastructure and call patterns.</p>
                                 <p><strong>Timeline:</strong> Research can begin during earlier phases. Build after Phase 3.</p>
                             </div>
                         </div>
@@ -1493,8 +1503,8 @@
                     <tbody>
                         <tr>
                             <td><strong>Initial Setup</strong></td>
-                            <td>System build, document processing, UX design and testing, training, iteration based on feedback</td>
-                            <td><strong>$19,000</strong></td>
+                            <td>System build, document processing, UX design and testing, training, iteration based on feedback, multi-phase platform architecture</td>
+                            <td><strong>$24,000</strong></td>
                         </tr>
                         <tr>
                             <td>Platform License</td>
@@ -1529,7 +1539,7 @@
                         <tr class="pricing-total">
                             <td></td>
                             <td><strong>YEAR 1 TOTAL</strong></td>
-                            <td><strong>$20,200</strong></td>
+                            <td><strong>$25,200</strong></td>
                         </tr>
                         <tr>
                             <td colspan="3" style="background: transparent !important;"></td>
@@ -1557,27 +1567,22 @@
                         <tr>
                             <td><strong>Phase 1</strong></td>
                             <td>Internal AI Chatbot (Teams)</td>
-                            <td><strong>$19,000 setup + $100/mo platform</strong></td>
+                            <td><strong>$24,000</strong></td>
                         </tr>
                         <tr>
                             <td>Phase 2</td>
                             <td>Internal Knowledge Base Build-Out</td>
-                            <td>To be scoped</td>
+                            <td>Estimated: $22,000</td>
                         </tr>
                         <tr>
                             <td>Phase 3</td>
                             <td>External AI Chatbot (Website)</td>
-                            <td>To be scoped</td>
+                            <td>Estimated: $25,000</td>
                         </tr>
                         <tr>
                             <td>Phase 4</td>
                             <td>AI Voice Phone System</td>
-                            <td>To be scoped</td>
-                        </tr>
-                        <tr>
-                            <td>Ticketing Integration</td>
-                            <td>AI bot connection to ticketing system</td>
-                            <td>To be scoped</td>
+                            <td>Estimated: $28,000</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1588,7 +1593,7 @@
 
 <br/>
                 <h3>Return on Investment</h3>
-                <p>Based on San Francisco's deployment of Microsoft Copilot to 30,000 city employees, staff save an average of <strong>5 hours per week</strong>. For a department of 20 people, this translates to <strong>$156,000 per year in productivity value</strong> (60 hours/week x $50/hour x 52 weeks). The Year 1 investment of $20,200 delivers approximately <strong>8x ROI</strong> from a single department. The core platform cost remains minimal at just $1,200/year, with optional support available as needed to ensure the system continues to deliver value.</p>
+                <p>Based on San Francisco's deployment of Microsoft Copilot to 30,000 city employees, staff save an average of <strong>5 hours per week</strong>. For a department of 20 people, this translates to <strong>$156,000 per year in productivity value</strong> (60 hours/week x $50/hour x 52 weeks). The Year 1 investment of $25,200 delivers approximately <strong>6x ROI</strong> from a single department. The core platform cost remains minimal at just $1,200/year, with optional support available as needed to ensure the system continues to deliver value.</p>
             </div>
         </section>
 
