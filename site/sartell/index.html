@@ -415,6 +415,30 @@
             flex-shrink: 0;
         }
 
+        .view-details-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            padding: 8px 16px;
+            background: rgba(0,102,204,0.08);
+            color: var(--brand-blue);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .phase-card:hover .view-details-cta,
+        .collapsible-section:hover .view-details-cta {
+            background: rgba(0,102,204,0.15);
+        }
+
+        .phase-card.expanded .view-details-cta,
+        .collapsible-section.expanded .view-details-cta {
+            display: none;
+        }
+
         .phase-timeline-content p {
             font-size: 16px;
             line-height: 1.6;
@@ -1179,8 +1203,9 @@
                         <div class="phase-timeline-content">
                             <div class="phase-header">
                                 <span class="phase-label">Active</span>
-                                <h4><span class="phase-chevron">&#9654;</span> Phase 1: Internal AI Chatbot (Teams)</h4>
+                                <h4>Phase 1: Internal AI Chatbot (Teams)</h4>
                                 <p>AI-powered assistant for city employees via Microsoft Teams, trained on approximately 70 to 95 publicly available city documents loaded into SharePoint.</p>
+                                <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
                             </div>
                             <div class="phase-detail">
                                 <p>An AI-powered assistant integrated directly into Microsoft Teams that city employees can ask questions in plain English. It searches a curated library of city documents and returns accurate, cited answers within seconds. Phase 1 also establishes the multi-phase platform architecture: the knowledge base structure, indexing approach, conversation framework, and deployment architecture are all designed for extensibility into Phases 2 through 4.</p>
@@ -1322,8 +1347,9 @@
                         <div class="phase-timeline-content">
                             <div class="phase-header">
                                 <span class="phase-label">Planned</span>
-                                <h4><span class="phase-chevron">&#9654;</span> Phase 2: Internal Knowledge Base Build-Out</h4>
+                                <h4>Phase 2: Internal Knowledge Base Build-Out</h4>
                                 <p>Discover, audit, and onboard internal city documents (HR policies, department procedures, administrative guidelines) into the AI system.</p>
+                                <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
                             </div>
                             <div class="phase-detail">
                                 <p>A dedicated engagement to discover, audit, organize, and onboard the city's internal documents into the AI system. This transforms the bot from a public-information tool into a comprehensive internal knowledge assistant covering HR policies, department procedures, administrative guidelines, and operational documents.</p>
@@ -1332,41 +1358,18 @@
                                 <p>Phase 1 uses publicly available website content that is already published, organized, and considered final. Phase 2 involves fundamentally different work:</p>
                                 <ul>
                                     <li><strong>Discovery and stakeholder coordination.</strong> Meeting with each department head to identify what documents exist, where they live, and what gaps need to be flagged.</li>
-                                    <li><strong>Content audit and readiness assessment.</strong> Assessing internal documents for accuracy, relevance, and inclusion. Some departments may discover their SOPs haven't been written yet.</li>
+                                    <li><strong>Content audit and readiness assessment.</strong> Assessing internal documents for accuracy, relevance, and inclusion.</li>
                                     <li><strong>Information architecture.</strong> Designing the SharePoint structure for internal documents with proper metadata, categorization, and access controls.</li>
                                     <li><strong>Bot retraining and conversation tuning.</strong> New topic areas need testing. The bot needs to handle questions spanning both public and internal content.</li>
                                     <li><strong>Validation and testing.</strong> Each department's content tested with real queries before rollout.</li>
                                 </ul>
 
                                 <h3>Candidate Document Categories</h3>
-                                <p><strong>HR and Employee Resources (high priority):</strong></p>
                                 <ul>
-                                    <li>Employee handbook</li>
-                                    <li>Bargaining agreements</li>
-                                    <li>Benefits information</li>
-                                    <li>Onboarding procedures and checklists</li>
-                                    <li>Time-off and leave policies</li>
+                                    <li><strong>HR and Employee Resources (high priority).</strong> Employee handbook, benefits information, onboarding procedures, and time-off policies.</li>
+                                    <li><strong>Administrative Policies and Procedures.</strong> Purchasing and procurement, travel and reimbursement, and acceptable use policies.</li>
+                                    <li><strong>Department-Specific Content.</strong> Brand guide, inspection checklists, standard operating procedures, and internal finance procedures.</li>
                                 </ul>
-                                <p><strong>Administrative Policies and Procedures:</strong></p>
-                                <ul>
-                                    <li>Purchasing and procurement</li>
-                                    <li>Travel and reimbursement</li>
-                                    <li>Acceptable use policies</li>
-                                </ul>
-                                <p><strong>Department-Specific Content:</strong></p>
-                                <ul>
-                                    <li>Brand guide and marketing standards</li>
-                                    <li>Inspection checklists and interpretation guides</li>
-                                    <li>Standard operating procedures (Public Works)</li>
-                                    <li>Internal finance procedures</li>
-                                </ul>
-                                <p><strong>Public Safety (requires separate discovery):</strong></p>
-                                <ul>
-                                    <li>Police department policy manual</li>
-                                    <li>Fire and life safety procedures</li>
-                                    <li>Note: PD operates on county servers, not city M365</li>
-                                </ul>
-
                                 <h3>Deliverables</h3>
                                 <ul>
                                     <li>Department-by-department content audit</li>
@@ -1376,8 +1379,7 @@
                                     <li>Documentation of gaps (documents departments need but don't yet have)</li>
                                 </ul>
 
-                                <p><strong>Estimated investment:</strong> $22,000</p>
-                                <p><strong>Timeline:</strong> Discovery can begin during Phase 1 build. Full build-out begins after Phase 1 is stable.</p>
+                                <p><strong>Estimated investment:</strong> $27,000</p>
                             </div>
                         </div>
                     </div>
@@ -1388,8 +1390,9 @@
                         <div class="phase-timeline-content">
                             <div class="phase-header">
                                 <span class="phase-label">Future</span>
-                                <h4><span class="phase-chevron">&#9654;</span> Phase 3: External AI Chatbot (Website)</h4>
+                                <h4>Phase 3: External AI Chatbot (Website)</h4>
                                 <p>Public-facing chatbot on sartellmn.com for residents, visitors, and businesses.</p>
+                                <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
                             </div>
                             <div class="phase-detail">
                                 <p>A public-facing version of the chatbot deployed on sartellmn.com. Residents, visitors, and businesses ask questions and get answers drawn from the city's published information.</p>
@@ -1411,8 +1414,7 @@
                                 </ul>
 
                                 <p><strong>Data source:</strong> Same public content from Phases 1 and 2 (internal-only documents are excluded from the public bot).</p>
-                                <p><strong>Estimated investment:</strong> $25,000</p>
-                                <p><strong>Timeline:</strong> After Phase 1 is stable and the internal team is comfortable with the system.</p>
+                                <p><strong>Estimated investment:</strong> $34,000</p>
                             </div>
                         </div>
                     </div>
@@ -1423,8 +1425,9 @@
                         <div class="phase-timeline-content">
                             <div class="phase-header">
                                 <span class="phase-label">Future</span>
-                                <h4><span class="phase-chevron">&#9654;</span> Phase 4: AI Voice Phone System</h4>
+                                <h4>Phase 4: AI Voice Phone System</h4>
                                 <p>AI-powered phone system for incoming calls, common questions, and call routing.</p>
+                                <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
                             </div>
                             <div class="phase-detail">
                                 <p>An AI-powered phone system that answers incoming calls, handles common questions via voice, and routes to the right person when needed. This replaces or supplements the traditional phone tree with a conversational AI experience.</p>
@@ -1454,8 +1457,7 @@
                                 <h3>How It Connects</h3>
                                 <p>The knowledge base built and refined across Phases 1 through 3 feeds directly into the voice system. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction.</p>
 
-                                <p><strong>Estimated investment:</strong> $28,000. These are early estimates that will be refined as Phases 1 through 3 progress and more is known about Sartell's phone infrastructure and call patterns.</p>
-                                <p><strong>Timeline:</strong> Research can begin during earlier phases. Build after Phase 3.</p>
+                                <p><strong>Estimated investment:</strong> $34,000. These are early estimates that will be refined as Phases 1 through 3 progress and more is known about Sartell's phone infrastructure and call patterns.</p>
                             </div>
                         </div>
                     </div>
@@ -1465,11 +1467,9 @@
                 <div class="collapsible-section workstream-spacer" data-default="collapsed">
                     <div class="collapsible-header" style="flex-direction: column; align-items: flex-start;">
                         <span class="phase-label" style="background: rgba(0,0,0,0.06); color: var(--med-gray);">In Discovery</span>
-                        <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
-                            <span class="collapsible-chevron">&#9654;</span>
-                            <h3 style="color: var(--brand-blue); font-size: 26px;">Additional Workstream: Ticketing and Work Order System</h3>
-                        </div>
+                        <h3 style="color: var(--brand-blue); font-size: 26px;">Additional Workstream: Ticketing and Work Order System</h3>
                         <p style="font-size: 16px; line-height: 1.6; margin: 0; color: var(--med-gray);">Centralized ticketing and work order system with AI-powered intake, routing, and status tracking.</p>
+                        <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
                     </div>
                     <div class="collapsible-content">
                         <p>The gap assessment identified a strong desire across nearly every department for a centralized ticketing and work order system with structured intake, workflow routing, status tracking, and a supervisor dashboard.</p>
@@ -1572,24 +1572,23 @@
                         <tr>
                             <td>Phase 2</td>
                             <td>Internal Knowledge Base Build-Out</td>
-                            <td>Estimated: $22,000</td>
+                            <td>Estimated: $27,000</td>
                         </tr>
                         <tr>
                             <td>Phase 3</td>
                             <td>External AI Chatbot (Website)</td>
-                            <td>Estimated: $25,000</td>
+                            <td>Estimated: $34,000</td>
                         </tr>
                         <tr>
                             <td>Phase 4</td>
                             <td>AI Voice Phone System</td>
-                            <td>Estimated: $28,000</td>
+                            <td>Estimated: $34,000</td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
 
                 <p>Each phase is scoped and priced independently based on the specific requirements discovered during the engagement. Phases 2 through 4 will be scoped as the project progresses, ensuring pricing reflects actual needs rather than estimates. This approach keeps each phase accountable and allows the city to make informed decisions at each stage.</p>
-                <p>Year 1 focuses on Phases 1 and 2: building the internal AI chatbot and expanding the knowledge base across departments. Year 2 introduces the external chatbot for residents and begins research on the voice phone system. Year 2 through 3 completes the voice system build and addresses the ticketing integration based on the city's selected platform.</p>
 
 <br/>
                 <h3>Return on Investment</h3>
@@ -1676,12 +1675,12 @@
                     section.classList.remove('expanded');
                     content.style.maxHeight = '0';
                     content.style.opacity = '0';
-                    chevron.innerHTML = '&#9654;';
+                    if (chevron) chevron.innerHTML = '&#9654;';
                 } else {
                     section.classList.add('expanded');
                     content.style.maxHeight = content.scrollHeight + 'px';
                     content.style.opacity = '1';
-                    chevron.innerHTML = '&#9660;';
+                    if (chevron) chevron.innerHTML = '&#9660;';
                     // After transition, set to none so dynamic content works
                     setTimeout(() => {
                         if (section.classList.contains('expanded')) {
@@ -1718,12 +1717,12 @@
                     card.classList.remove('expanded');
                     detail.style.maxHeight = '0';
                     detail.style.opacity = '0';
-                    chevron.innerHTML = '&#9654;';
+                    if (chevron) chevron.innerHTML = '&#9654;';
                 } else {
                     card.classList.add('expanded');
                     detail.style.maxHeight = detail.scrollHeight + 'px';
                     detail.style.opacity = '1';
-                    chevron.innerHTML = '&#9660;';
+                    if (chevron) chevron.innerHTML = '&#9660;';
                     setTimeout(() => {
                         if (card.classList.contains('expanded')) {
                             detail.style.maxHeight = 'none';
