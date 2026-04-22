@@ -1163,7 +1163,7 @@
                 <div class="subtitle">Multi-Year AI Implementation Plan</div>
                 <div style="font-size: 16px; opacity: 0.5; margin-bottom: 8px; font-weight: 300;">Version 2.0</div>
                 <div style="font-size: 15px; opacity: 0.6; margin-bottom: 40px; color: rgba(255,255,255,0.7); font-weight: 400;">Full Pricing Across All Phases. April 2026</div>
-                <a href="#overview" class="cta-button" onclick="scrollToSection('overview')">Learn More</a>
+                <a href="#overview" class="cta-button" onclick="event.preventDefault(); document.getElementById('overview').scrollIntoView({behavior: 'smooth'});">Learn More</a>
             </div>
         </div>
 
@@ -1209,7 +1209,7 @@
                             </div>
                             <div class="phase-detail">
                                 <p>An AI-powered assistant integrated directly into Microsoft Teams that city employees can ask questions in plain English. It searches a curated library of city documents and returns accurate, cited answers within seconds. Phase 1 also establishes the multi-phase platform architecture: the knowledge base structure, indexing approach, conversation framework, and deployment architecture are all designed for extensibility into Phases 2 through 4.</p>
-                                <p><strong>Who uses it:</strong> All 114 M365 users across city departments (desktop and mobile).</p>
+                                <p><strong>Who uses it:</strong> Microsoft 365 users across different city departments (desktop and mobile).</p>
 
                                 <div class="mockup-container">
                                     <img src="/sartell/product01.png" width="400" alt="Microsoft Teams interface showing the AI Assistant" style="max-width: 100%; height: auto;" />
@@ -1335,18 +1335,17 @@
                                     <li>Microsoft/Teams approach endorsed by city IT leadership</li>
                                 </ul>
 
-                                <p>Ticketing and work order system integration is tracked as a separate workstream and is not included in the Phase 1 price.</p>
                                 <p><strong>Pricing:</strong> $26,000</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Phase 2 -->
-                    <div class="phase-card planned" data-default="collapsed">
+                    <div class="phase-card future" data-default="collapsed">
                         <div class="phase-marker">2</div>
                         <div class="phase-timeline-content">
                             <div class="phase-header">
-                                <span class="phase-label">Planned</span>
+                                <span class="phase-label">Future</span>
                                 <h4>Phase 2: Internal Knowledge Base Build-Out</h4>
                                 <p>Discover, audit, and onboard internal city documents (HR policies, department procedures, administrative guidelines) into the AI system.</p>
                                 <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
@@ -1577,7 +1576,7 @@
                         <tr>
                             <td><strong>Phase 1</strong></td>
                             <td>Internal AI Chatbot (Teams)</td>
-                            <td><strong>$26,000 setup + monthly fees</strong></td>
+                            <td><strong>$26,000 + monthly fees</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Phase 2</strong></td>
