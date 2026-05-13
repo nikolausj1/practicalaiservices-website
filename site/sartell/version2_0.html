@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ARCHIVED VERSION - Version 2.0 -->
+    <style>
+        .archive-banner {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+            background: #e8a020; color: #fff; text-align: center;
+            padding: 10px 20px; font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .archive-banner a { color: #fff; font-weight: 600; text-decoration: underline; }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Assistant for City of Sartell - Proposal</title>
@@ -1141,6 +1151,9 @@
     </style>
 </head>
 <body>
+    <div class="archive-banner">
+        This is an archived proposal (Version 2.0). <a href="/sartell/">View the current version</a>
+    </div>
     <!-- Background -->
     <div class="background-canvas"></div>
     <div class="network-dots">
@@ -1161,8 +1174,8 @@
                 <h1>AI ASSISTANT</h1>
                 <h2>FOR CITY OF SARTELL</h2>
                 <div class="subtitle">Multi-Year AI Implementation Plan</div>
-                <div style="font-size: 16px; opacity: 0.5; margin-bottom: 8px; font-weight: 300;">Version 2.1</div>
-                <div style="font-size: 15px; opacity: 0.6; margin-bottom: 40px; color: rgba(255,255,255,0.7); font-weight: 400;">Updated Roadmap with Ticketing as Phase 2. May 2026</div>
+                <div style="font-size: 16px; opacity: 0.5; margin-bottom: 8px; font-weight: 300;">Version 2.0</div>
+                <div style="font-size: 15px; opacity: 0.6; margin-bottom: 40px; color: rgba(255,255,255,0.7); font-weight: 400;">Full Pricing Across All Phases. April 2026</div>
                 <a href="#overview" class="cta-button" onclick="event.preventDefault(); document.getElementById('overview').scrollIntoView({behavior: 'smooth'});">Learn More</a>
             </div>
         </div>
@@ -1183,7 +1196,7 @@
                     <li><strong>One AI model.</strong> The same language model processes queries whether they come from a Teams chat, a website widget, or a phone call.</li>
                     <li><strong>One conversation design standard.</strong> Accuracy, citation behavior, escalation logic, and tone carry across all phases.</li>
                 </ul>
-                <p>What changes between phases is the audience, the interface, and the integrations. Internal employees get a Teams-based experience. Ticketing turns the bot into an action layer that can create and check tickets on behalf of users. Residents get plain language on the website. Voice callers get concise spoken responses. The brain behind all of it is the same.</p>
+                <p>What changes between phases is the audience, the interface, and the access controls. Internal employees get department-specific language. Residents get plain language. Voice callers get concise spoken responses. But the brain behind all of it is the same.</p>
                 <p>This means work done in one phase carries forward to the next. The system gets smarter and more capable over time as each phase builds on what came before.</p>
 
             </div>
@@ -1345,36 +1358,41 @@
                         <div class="phase-marker">2</div>
                         <div class="phase-timeline-content">
                             <div class="phase-header">
-                                <span class="phase-label">Next</span>
-                                <h4>Phase 2: Ticketing Integration</h4>
-                                <p>Integrate the AI chatbot with the city's selected ticketing platform so employees can create, update, and check tickets through conversation.</p>
+                                <span class="phase-label">Future</span>
+                                <h4>Phase 2: Internal Knowledge Base Build-Out</h4>
+                                <p>Discover, audit, and onboard internal city documents (HR policies, department procedures, administrative guidelines) into the AI system.</p>
                                 <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
                             </div>
                             <div class="phase-detail">
-                                <p>The gap assessment identified a strong desire across nearly every department for a centralized ticketing and work order system with structured intake, workflow routing, status tracking, and a supervisor dashboard.</p>
+                                <p>A dedicated engagement to discover, audit, organize, and onboard the city's internal documents into the AI system. This transforms the bot from a public-information tool into a comprehensive internal knowledge assistant covering HR policies, department procedures, administrative guidelines, and operational documents.</p>
 
-                                <h3>Two Components, One Phase</h3>
-                                <p>There are two distinct components to ticketing, and this phase only covers one of them.</p>
-                                <p><strong>The ticketing platform itself</strong> is the system where tickets live, workflows run, and dashboards display progress. This is a separate purchase decision for the city. Established platforms (such as GovPilot, CivicPlus, ServiceNow, Cartegraph, or others) are battle-tested for government use, handle compliance and security work, and will cost less than a custom build. The city is encouraged to select an established platform rather than commission a custom one.</p>
-                                <p><strong>The AI integration</strong> is what Phase 2 delivers. It connects the chatbot from Phase 1 as the front door to whatever ticketing platform the city selects. An employee tells the bot what they need, the bot collects details through conversation, and a ticket is created in the platform automatically. Users can also ask the bot for status updates on existing tickets.</p>
-
-                                <h3>Scope of Phase 2</h3>
+                                <h3>Why This Is a Separate Phase</h3>
+                                <p>Phase 1 uses publicly available website content that is already published, organized, and considered final. Phase 2 involves fundamentally different work:</p>
                                 <ul>
-                                    <li><strong>Platform integration build-out.</strong> Connect the AI chatbot to the selected ticketing platform via its API. Most established platforms expose APIs that support ticket creation, status lookup, and updates.</li>
-                                    <li><strong>Conversational intake design.</strong> Design the flows the bot uses to collect the information each ticket type requires (location, priority, category, attachments, etc.) without making the user fill out a form.</li>
-                                    <li><strong>Status check flows.</strong> Let employees ask the bot for updates on their own tickets and (where appropriate) tickets assigned to them.</li>
-                                    <li><strong>Routing and escalation logic.</strong> Configure how tickets get assigned, what happens when the bot is unsure, and where escalations go.</li>
-                                    <li><strong>Testing and validation.</strong> End-to-end testing across the most common ticket types from the gap assessment.</li>
+                                    <li><strong>Discovery and stakeholder coordination.</strong> Meeting with each department head to identify what documents exist, where they live, and what gaps need to be flagged.</li>
+                                    <li><strong>Content audit and readiness assessment.</strong> Assessing internal documents for accuracy, relevance, and inclusion.</li>
+                                    <li><strong>Information architecture.</strong> Designing the SharePoint structure for internal documents with proper metadata, categorization, and access controls.</li>
+                                    <li><strong>Bot retraining and conversation tuning.</strong> New topic areas need testing. The bot needs to handle questions spanning both public and internal content.</li>
+                                    <li><strong>Validation and testing.</strong> Each department's content tested with real queries before rollout.</li>
                                 </ul>
 
-                                <h3>Dependencies</h3>
+                                <h3>Candidate Document Categories</h3>
                                 <ul>
-                                    <li>Phase 1 must be live first. Phase 2 builds on the Phase 1 chatbot.</li>
-                                    <li>The city must select a ticketing platform before Phase 2 scoping is finalized.</li>
+                                    <li><strong>HR and Employee Resources (high priority).</strong> Employee handbook, benefits information, onboarding procedures, and time-off policies.</li>
+                                    <li><strong>Administrative Policies and Procedures.</strong> Purchasing and procurement, travel and reimbursement, and acceptable use policies.</li>
+                                    <li><strong>Department-Specific Content.</strong> Brand guide, inspection checklists, standard operating procedures, and internal finance procedures.</li>
+                                </ul>
+                                <h3>Deliverables</h3>
+                                <ul>
+                                    <li>Department-by-department content audit</li>
+                                    <li>Organized SharePoint document library with access controls</li>
+                                    <li>Updated bot with expanded knowledge base</li>
+                                    <li>Testing and validation across all new content areas</li>
+                                    <li>Documentation of gaps (documents departments need but don't yet have)</li>
                                 </ul>
 
-                                <p><strong>Pricing:</strong> TBD</p>
-                                <p>Phase 2 pricing is finalized once the city selects a ticketing platform. The number depends on the platform's API capabilities, the integration patterns it supports, and the ticket types in scope. Justin is happy to be looped in on the city's finalists before selection to confirm the AI bot will integrate cleanly.</p>
+                                <p><strong>Pricing:</strong> $35,000</p>
+                                <p>Pricing reflects discovery and audit work across roughly 6 to 7 city departments, content readiness assessment, SharePoint information architecture, access control configuration, bot retraining across new topic areas, and validation testing.</p>
                             </div>
                         </div>
                     </div>
@@ -1401,14 +1419,14 @@
                                 <ul>
                                     <li><strong>Website integration and deployment.</strong> Embedded chat widget or standalone page on sartellmn.com, coordinated with the city's website platform (Revize). Includes mobile responsive design, cross-browser testing, and ensuring the bot loads reliably across devices.</li>
                                     <li><strong>Conversation design for public audience.</strong> Residents ask questions differently than city employees. This requires redesigning how the bot maps everyday language to city information, building escalation paths for each department, designing flows for common questions from the list the city is building, and handling edge cases gracefully (political questions, complaints, off-topic requests).</li>
-                                    <li><strong>Content scoping and access controls.</strong> Ensuring internal content never surfaces in the public bot. The content boundary between what employees see and what residents see must be carefully defined and tested.</li>
+                                    <li><strong>Content scoping and access controls.</strong> Ensuring internal documents from Phase 2 never surface in the public bot. The content boundary between what employees see and what residents see must be carefully defined and tested.</li>
                                     <li><strong>Legal, accessibility, and compliance.</strong> ADA compliance for the chat interface, disclaimer language, FOIA implications for bot conversations with the public, and clear boundaries for topics the bot will not address.</li>
                                     <li><strong>Branding and tone alignment.</strong> The bot represents the city to residents. Voice, personality, and response style need to align with how the city communicates publicly.</li>
                                     <li><strong>Multilingual considerations.</strong> Graceful handling of non-English input, even without full multilingual support.</li>
                                     <li><strong>Adversarial testing and monitored launch.</strong> Testing for misuse scenarios (attempts to get the bot to say something inappropriate), a soft launch with active monitoring, and first-week tuning based on real resident interactions.</li>
                                 </ul>
 
-                                <p><strong>Data source:</strong> Same public content from Phase 1 (the public bot draws only from publicly available city documents).</p>
+                                <p><strong>Data source:</strong> Same public content from Phases 1 and 2 (internal-only documents are excluded from the public bot).</p>
                                 <p><strong>Pricing:</strong> $38,000</p>
                                 <p>Public-facing deployment carries a higher risk profile than internal tools. Pricing reflects accessibility compliance work (ADA/WCAG), plain-language conversation redesign for a resident audience, adversarial testing, escalation path design, and launch monitoring.</p>
                             </div>
@@ -1451,12 +1469,31 @@
                                 </ul>
 
                                 <h3>How It Connects</h3>
-                                <p>The knowledge base built in Phase 1 and refined through Phase 3 feeds directly into the voice system. Phase 2 ticketing integration also carries forward, so voice callers can create and check tickets by phone. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction.</p>
+                                <p>The knowledge base built and refined across Phases 1 through 3 feeds directly into the voice system. The "common questions" list the city is building supports this phase. The voice system uses the same AI engine with a conversation design optimized for spoken interaction.</p>
 
                                 <p><strong>Pricing:</strong> $45,000</p>
                                 <p>Voice AI is a distinct discipline from text chatbots. Pricing reflects platform evaluation and selection, phone system integration (SIP/PBX work), voice-specific conversation design (concise responses, barge-in handling, warm transfer logic), speech recognition tuning, and operational testing. Specialized expertise in voice AI design is required.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Additional Workstream -->
+                <div class="collapsible-section workstream-spacer" data-default="collapsed">
+                    <div class="collapsible-header" style="flex-direction: column; align-items: flex-start;">
+                        <span class="phase-label" style="background: rgba(0,0,0,0.06); color: var(--med-gray);">In Discovery</span>
+                        <h3 style="color: var(--brand-blue); font-size: 26px;">Additional Workstream: Ticketing and Work Order System</h3>
+                        <p style="font-size: 16px; line-height: 1.6; margin: 0; color: var(--med-gray);">Centralized ticketing and work order system with AI-powered intake, routing, and status tracking.</p>
+                        <span class="view-details-cta">View full details <span style="font-size: 16px;">&rarr;</span></span>
+                    </div>
+                    <div class="collapsible-content">
+                        <p>Ticketing integration is tracked separately from the four core AI phases because its scope depends on which ticketing platform the city selects. Pricing will be finalized once the platform decision is made.</p>
+                        <p>The gap assessment identified a strong desire across nearly every department for a centralized ticketing and work order system with structured intake, workflow routing, status tracking, and a supervisor dashboard.</p>
+                        <p>There are two distinct components to this:</p>
+                        <p><strong>The ticketing platform</strong> is the system where tickets live, workflows run, and dashboards display progress. This is workflow and application development that requires its own dedicated scoping.</p>
+                        <p><strong>The AI integration</strong> connects the chatbot as the front door to whatever ticketing system is in place. An employee tells the bot what they need, the bot collects the details through conversation, and a ticket is created automatically. Users can also ask the bot for status updates on existing tickets. This integration layer is part of the AI engagement and works regardless of which ticketing platform is selected.</p>
+                        <p>The approach to the ticketing platform is currently being evaluated. Options include recommending a third-party platform (such as GovPilot, CivicPlus, or ServiceNow), partnering with a development firm, or building on Microsoft's existing tools (Power Apps, SharePoint Lists, Power Automate). A recommendation will be presented once the evaluation is complete.</p>
+                        <p><strong>The AI bot serves as the connective tissue between employees and whatever operational systems are in place.</strong> Whether the request comes through Teams, the website, or a phone call, the bot can create and check tickets on behalf of the user.</p>
                     </div>
                 </div>
 
@@ -1556,8 +1593,8 @@
                         </tr>
                         <tr>
                             <td><strong>Phase 2</strong></td>
-                            <td>Ticketing Integration</td>
-                            <td><strong>TBD (depends on platform selection)</strong></td>
+                            <td>Internal Knowledge Base Build-Out</td>
+                            <td><strong>~$35,000</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Phase 3</strong></td>
@@ -1573,14 +1610,7 @@
                 </table>
                 </div>
 
-                <p>Phase 1 is the foundation. Every later phase builds on it. Phases 2, 3, and 4 are independently scoped and contracted, so the city can adjust scope, sequence, or stop at any phase boundary based on results and budget. Phase 2 pricing is finalized once the city selects a ticketing platform.</p>
-
-                <p><strong>Phase sequence:</strong></p>
-                <p>Phase 1: Internal AI chatbot for employees.</p>
-                <p>Phase 2: Ticketing integration so the bot can create and check tickets in the city's selected platform.</p>
-                <p>Phase 3: External resident-facing chatbot on the city website.</p>
-                <p>Phase 4: AI voice phone system.</p>
-                <p>The scheduling of each phase is up to the city, based on budget cycles, operational readiness, and decision points between phases. Phase 1 is in the 6 to 9 month range based on Justin's capacity. After Phase 1 lands, the team will make an informed call on Phase 2 timing. Each phase is independently scoped and contracted, so the city can adjust timing or stop at any phase boundary.</p>
+                <p>All four core phases are now scoped and priced. Phases 2, 3, and 4 build on the foundation established in Phase 1. Each phase stands on its own terms: the city is not locked into later phases by starting Phase 1. The ticketing integration remains in discovery because its scope depends on which ticketing platform the city selects.</p>
 
 <br/>
                 <h3>Return on Investment</h3>
@@ -1637,8 +1667,7 @@
         <footer style="text-align: center; padding: 30px 20px; opacity: 0.4; font-size: 13px;">
             <div><a href="/sartell/version1_0.html" style="color: inherit; text-decoration: none;">Version 1.0 - Original Proposal (January 2026)</a></div>
             <div style="margin-top: 5px;"><a href="/sartell/version1_1.html" style="color: inherit; text-decoration: none;">Version 1.1 - Phase 1 Proposal Update (February 2026)</a></div>
-            <div style="margin-top: 5px;"><a href="/sartell/version2_0.html" style="color: inherit; text-decoration: none;">Version 2.0 - Multi-Phase Pricing (April 2026)</a></div>
-            <div style="margin-top: 5px;">Version 2.1 - Roadmap Restructure with Ticketing as Phase 2 (May 2026)</div>
+            <div style="margin-top: 5px;">Version 2.0 - Multi-Phase Pricing (April 2026)</div>
         </footer>
     </div>
 
